@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag, ChevronDown, Lock, ShieldCheck, Crown } from 'lucide-react';
+import { ShoppingBag, ChevronDown, Crown } from 'lucide-react';
 
 export default function Navbar({ 
   currency, 
@@ -8,8 +8,7 @@ export default function Navbar({
   setIsCartOpen, 
   activeTab, 
   setActiveTab,
-  isOwnerAuthenticated,
-  onOpenOwnerModal
+  isOwnerAuthenticated
 }) {
   return (
     <header className="sticky top-0 z-50 bg-[#f5ead8]/90 backdrop-blur-md border-b border-[#201e1d]/10 transition-all">
@@ -67,7 +66,7 @@ export default function Navbar({
             Quiz
           </button>
 
-          {/* Owner Only AI Suite Tab (Visible only when Owner is authenticated) */}
+          {/* Owner Only AI Suite Tab (Unlocked only when Owner PIN is verified) */}
           {isOwnerAuthenticated && (
             <button
               onClick={() => setActiveTab('marketing')}
@@ -86,26 +85,6 @@ export default function Navbar({
         {/* Right Actions */}
         <div className="flex items-center gap-4">
           
-          {/* Owner Access Portal Button */}
-          {!isOwnerAuthenticated ? (
-            <button
-              onClick={onOpenOwnerModal}
-              className="hidden sm:flex items-center gap-1.5 text-xs text-[#201e1d]/60 hover:text-[#c67139] font-mono py-1.5 px-3 rounded-full border border-[#201e1d]/15 hover:border-[#c67139] transition-all"
-              title="Website Owner & Founder Portal Access"
-            >
-              <Lock className="w-3.5 h-3.5" />
-              <span>Owner Login</span>
-            </button>
-          ) : (
-            <button
-              onClick={() => setActiveTab('marketing')}
-              className="flex items-center gap-1 text-xs font-semibold text-[#f5ead8] bg-[#c67139] py-1 px-3 rounded-full shadow-sm hover:opacity-90 transition-opacity"
-            >
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Owner Portal</span>
-            </button>
-          )}
-
           {/* Currency Selector */}
           <div className="relative">
             <select
@@ -145,10 +124,8 @@ export default function Navbar({
         <button onClick={() => setActiveTab('why-fiber')} className={`shrink-0 ${activeTab === 'why-fiber' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>Science</button>
         <button onClick={() => setActiveTab('batch')} className={`shrink-0 ${activeTab === 'batch' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>Batch QA</button>
         <button onClick={() => setActiveTab('quiz')} className={`shrink-0 ${activeTab === 'quiz' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>Quiz</button>
-        {isOwnerAuthenticated ? (
+        {isOwnerAuthenticated && (
           <button onClick={() => setActiveTab('marketing')} className={`shrink-0 text-[#c67139] font-bold`}>👑 Owner AI</button>
-        ) : (
-          <button onClick={onOpenOwnerModal} className="shrink-0 text-[#201e1d]/50 font-mono">🔒 Owner Portal</button>
         )}
       </div>
     </header>

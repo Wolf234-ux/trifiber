@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import CleanHome from './components/CleanHome';
 import Products from './components/Products';
@@ -12,7 +12,7 @@ import MarketingSuite from './components/MarketingSuite';
 import CartDrawer from './components/CartDrawer';
 import OwnerAuthModal from './components/OwnerAuthModal';
 import Footer from './components/Footer';
-import { CheckCircle2, Lock, ShieldAlert } from 'lucide-react';
+import { CheckCircle2, Lock } from 'lucide-react';
 
 export default function App() {
   const [currency, setCurrency] = useState('INR');
@@ -24,6 +24,14 @@ export default function App() {
   // Owner Authentication State (Restricts AI Suite & Campaign Tools)
   const [isOwnerAuthenticated, setIsOwnerAuthenticated] = useState(false);
   const [isOwnerModalOpen, setIsOwnerModalOpen] = useState(false);
+
+  // Discreet Owner Access Trigger: Append ?admin=true or ?owner=true to URL to unlock PIN prompt
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('admin') === 'true' || params.get('owner') === 'true') {
+      setIsOwnerModalOpen(true);
+    }
+  }, []);
 
   const triggerToast = (msg) => {
     setToastMessage(msg);
@@ -73,7 +81,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Global Navigation */}
+      {/* Global Navigation (No visible Owner Login button in Production) */}
       <Navbar
         currency={currency}
         setCurrency={setCurrency}
@@ -139,21 +147,11 @@ export default function App() {
             {isOwnerAuthenticated ? (
               <MarketingSuite />
             ) : (
-              <div className="container-max py-16 text-center space-y-4">
-                <div className="w-16 h-16 bg-[#c67139]/10 text-[#c67139] rounded-full flex items-center justify-center mx-auto">
-                  <Lock className="w-8 h-8" />
-                </div>
-                <h2 className="font-serif text-2xl font-bold">Website Owner Access Required</h2>
-                <p className="text-sm text-[#201e1d]/70 max-w-md mx-auto">
-                  The AI Marketing Suite & Lead Campaign Generator are reserved exclusively for the website owner.
-                </p>
-                <button
-                  onClick={() => setIsOwnerModalOpen(true)}
-                  className="btn btn-primary"
-                >
-                  Enter Owner PIN to Unlock
-                </button>
-              </div>
+              <CleanHome
+                currency={currency}
+                addToCart={addToCart}
+                setActiveTab={handleTabChange}
+              />
             )}
           </div>
         )}

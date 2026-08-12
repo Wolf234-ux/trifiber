@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ShieldCheck, Mail, ArrowRight, Lock } from 'lucide-react';
+import { Sparkles, ShieldCheck, Mail, ArrowRight } from 'lucide-react';
 
 export default function Footer({ setActiveTab, onOpenOwnerModal, isOwnerAuthenticated }) {
   const [email, setEmail] = useState('');
@@ -29,9 +29,13 @@ export default function Footer({ setActiveTab, onOpenOwnerModal, isOwnerAuthenti
           
           {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
-            <div className="font-serif text-3xl font-bold tracking-tight text-[#f5ead8]">
+            <button 
+              onDoubleClick={onOpenOwnerModal}
+              className="font-serif text-3xl font-bold tracking-tight text-[#f5ead8] text-left focus:outline-none"
+              title="TriFiber Health"
+            >
               TriFiber<span className="text-[#c67139]">.</span>
-            </div>
+            </button>
             <p className="text-sm text-[#f5ead8]/70 leading-relaxed max-w-sm">
               Evidence-led everyday nutrition for gut and metabolic health in the post-GLP-1 era. Simple, daily habits engineered for long-term health.
             </p>
@@ -50,15 +54,6 @@ export default function Footer({ setActiveTab, onOpenOwnerModal, isOwnerAuthenti
               <li><button onClick={() => setActiveTab('why-fiber')} className="hover:text-[#c67139] transition-colors">Why Fiber & Science</button></li>
               <li><button onClick={() => setActiveTab('batch')} className="hover:text-[#c67139] transition-colors">Quality Batch QA</button></li>
               <li><button onClick={() => setActiveTab('quiz')} className="hover:text-[#c67139] transition-colors">Metabolic Quiz</button></li>
-              <li>
-                <button 
-                  onClick={() => isOwnerAuthenticated ? setActiveTab('marketing') : onOpenOwnerModal()} 
-                  className="hover:text-[#c67139] transition-colors text-xs font-mono text-[#f5ead8]/40 flex items-center gap-1 mt-2"
-                >
-                  <Lock className="w-3 h-3" />
-                  <span>Owner Admin Portal</span>
-                </button>
-              </li>
             </ul>
           </div>
 
