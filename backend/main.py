@@ -339,9 +339,10 @@ def process_checkout(data: CheckoutRequest):
         "message": "Order confirmed! Track your batch quality details in your confirmation email."
     }
 
-# Fallback route to serve production React application index.html for non-API routes
+# Fallback route to serve production React application index.html for root and non-API routes
+@app.get("/")
 @app.get("/{full_path:path}")
-def serve_react_app(full_path: str):
+def serve_react_app(full_path: str = ""):
     index_file = os.path.join(FRONTEND_DIST_DIR, "index.html")
     if os.path.exists(index_file):
         return FileResponse(index_file)
@@ -353,6 +354,7 @@ def serve_react_app(full_path: str):
         "frontend_dev_url": "http://localhost:5173",
         "html_preview": "/html-preview"
     }
+
 
 if __name__ == "__main__":
     import uvicorn
