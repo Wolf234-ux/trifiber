@@ -1,12 +1,14 @@
 # Render Blueprint Specification for TriFiber Health Platform
-# Render automatically detects this file to provision and auto-deploy the Docker container service.
+# Configured with isolated Staging and Production environments.
 # Reference: https://render.com/docs/blueprint-spec
 
 services:
+  # 1. Staging Environment (Auto-deployed from `staging` branch for UAT testing)
   - type: web
-    name: trifiber-health
+    name: trifiber-staging
     runtime: docker
     dockerfilePath: ./Dockerfile
+    branch: staging
     plan: free
     region: singapore
     autoDeploy: true
@@ -14,3 +16,21 @@ services:
     envVars:
       - key: PORT
         value: 10000
+      - key: ENVIRONMENT
+        value: staging
+
+  # 2. Production Environment (Auto-deployed from `main` branch after Staging approval)
+  - type: web
+    name: trifiber-health
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    branch: main
+    plan: free
+    region: singapore
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: ENVIRONMENT
+        value: production

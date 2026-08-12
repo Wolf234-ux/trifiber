@@ -259,9 +259,12 @@ def run_infrastructure_audit() -> bool:
                 log_warn("render.yaml missing autoDeploy setting.")
             if "runtime: docker" in ry_content:
                 log_pass("render.yaml Docker runtime specified.")
+            if "trifiber-staging" in ry_content and "trifiber-health" in ry_content:
+                log_pass("render.yaml has both Staging (staging) & Production (main) web services.")
     else:
         log_fail("render.yaml Blueprint missing at repository root!")
         passed = False
+
 
     return passed
 
