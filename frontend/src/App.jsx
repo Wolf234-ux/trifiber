@@ -10,8 +10,9 @@ import BatchQA from './components/BatchQA';
 import ClaimsChecker from './components/ClaimsChecker';
 import MarketingSuite from './components/MarketingSuite';
 import CartDrawer from './components/CartDrawer';
+import OwnerAuthModal from './components/OwnerAuthModal';
 import Footer from './components/Footer';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Lock, ShieldAlert } from 'lucide-react';
 
 export default function App() {
   const [currency, setCurrency] = useState('INR');
@@ -19,6 +20,10 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
   const [toastMessage, setToastMessage] = useState(null);
+  
+  // Owner Authentication State (Restricts AI Suite & Campaign Tools)
+  const [isOwnerAuthenticated, setIsOwnerAuthenticated] = useState(false);
+  const [isOwnerModalOpen, setIsOwnerModalOpen] = useState(false);
 
   const triggerToast = (msg) => {
     setToastMessage(msg);
@@ -39,6 +44,14 @@ export default function App() {
     });
 
     triggerToast(`Added ${product.name} to cart!`);
+  };
+
+  const handleTabChange = (tab) => {
+    if (tab === 'marketing' && !isOwnerAuthenticated) {
+      setIsOwnerModalOpen(true);
+      return;
+    }
+    setActiveTab(tab);
   };
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -67,7 +80,9 @@ export default function App() {
         cartCount={cartCount}
         setIsCartOpen={setIsCartOpen}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleTabChange}
+        isOwnerAuthenticated={isOwnerAuthenticated}
+        onOpenOwnerModal={() => setIsOwnerModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -76,7 +91,7 @@ export default function App() {
           <CleanHome
             currency={currency}
             addToCart={addToCart}
-            setActiveTab={setActiveTab}
+            setActiveTab={handleTabChange}
           />
         )}
 
@@ -84,7 +99,7 @@ export default function App() {
           <TriFiberDailyPage
             currency={currency}
             addToCart={addToCart}
-            setActiveTab={setActiveTab}
+            setActiveTab={handleTabChange}
           />
         )}
 
@@ -92,12 +107,12 @@ export default function App() {
           <BerberinePage
             currency={currency}
             addToCart={addToCart}
-            setActiveTab={setActiveTab}
+            setActiveTab={handleTabChange}
           />
         )}
 
         {activeTab === 'why-fiber' && (
-          <WhyFiberScience setActiveTab={setActiveTab} />
+          <WhyFiberScience setActiveTab={handleTabChange} />
         )}
 
         {activeTab === 'batch' && (
@@ -108,7 +123,7 @@ export default function App() {
 
         {activeTab === 'quiz' && (
           <div className="pt-6">
-            <MetabolicQuiz setActiveTab={setActiveTab} />
+            <MetabolicQuiz setActiveTab={handleTabChange} />
           </div>
         )}
 
@@ -118,9 +133,28 @@ export default function App() {
           </div>
         )}
 
+        {/* Owner-Only AI Suite Section */}
         {activeTab === 'marketing' && (
           <div className="pt-6">
-            <MarketingSuite />
+            {isOwnerAuthenticated ? (
+              <MarketingSuite />
+            ) : (
+              <div className="container-max py-16 text-center space-y-4">
+                <div className="w-16 h-16 bg-[#c67139]/10 text-[#c67139] rounded-full flex items-center justify-center mx-auto">
+                  <Lock className="w-8 h-8" />
+                </div>
+                <h2 className="font-serif text-2xl font-bold">Website Owner Access Required</h2>
+                <p className="text-sm text-[#201e1d]/70 max-w-md mx-auto">
+                  The AI Marketing Suite & Lead Campaign Generator are reserved exclusively for the website owner.
+                </p>
+                <button
+                  onClick={() => setIsOwnerModalOpen(true)}
+                  className="btn btn-primary"
+                >
+                  Enter Owner PIN to Unlock
+                </button>
+              </div>
+            )}
           </div>
         )}
       </main>
@@ -134,8 +168,23 @@ export default function App() {
         currency={currency}
       />
 
+      {/* Owner Security Authentication Modal */}
+      <OwnerAuthModal
+        isOpen={isOwnerModalOpen}
+        onClose={() => setIsOwnerModalOpen(false)}
+        onSuccess={() => {
+          setIsOwnerAuthenticated(true);
+          setActiveTab('marketing');
+          triggerToast('Welcome Website Owner! AI Suite Unlocked.');
+        }}
+      />
+
       {/* Footer */}
-      <Footer setActiveTab={setActiveTab} />
+      <Footer 
+        setActiveTab={handleTabChange} 
+        onOpenOwnerModal={() => setIsOwnerModalOpen(true)}
+        isOwnerAuthenticated={isOwnerAuthenticated}
+      />
 
     </div>
   );

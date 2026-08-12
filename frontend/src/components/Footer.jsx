@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Sparkles, ShieldCheck, Mail, ArrowRight } from 'lucide-react';
+import { Sparkles, ShieldCheck, Mail, ArrowRight, Lock } from 'lucide-react';
 
-export default function Footer({ setActiveTab }) {
+export default function Footer({ setActiveTab, onOpenOwnerModal, isOwnerAuthenticated }) {
   const [email, setEmail] = useState('');
   const [leadSuccess, setLeadSuccess] = useState(false);
 
@@ -50,6 +50,15 @@ export default function Footer({ setActiveTab }) {
               <li><button onClick={() => setActiveTab('why-fiber')} className="hover:text-[#c67139] transition-colors">Why Fiber & Science</button></li>
               <li><button onClick={() => setActiveTab('batch')} className="hover:text-[#c67139] transition-colors">Quality Batch QA</button></li>
               <li><button onClick={() => setActiveTab('quiz')} className="hover:text-[#c67139] transition-colors">Metabolic Quiz</button></li>
+              <li>
+                <button 
+                  onClick={() => isOwnerAuthenticated ? setActiveTab('marketing') : onOpenOwnerModal()} 
+                  className="hover:text-[#c67139] transition-colors text-xs font-mono text-[#f5ead8]/40 flex items-center gap-1 mt-2"
+                >
+                  <Lock className="w-3 h-3" />
+                  <span>Owner Admin Portal</span>
+                </button>
+              </li>
             </ul>
           </div>
 
