@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/styles.css">
+  <script src="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; }
+    a:hover { color: var(--color-accent-700); }
+  </style>
+</helmet>
+<dc-import name="SiteNav" current="berberine" hint-size="100%,63px"></dc-import>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 60px 40px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start">
+  <div style="position: relative">
+    <div style="position: absolute; left: -20px; bottom: 60px; width: 150px; height: 150px; border-radius: 999px; background: var(--color-accent-2-200)"></div>
+    <div class="washed" style="position: relative; border-radius: 40px; overflow: hidden; box-shadow: var(--shadow-md)">
+      <image-slot id="berb-main" src="assets/photo.jpg" shape="rect" style="width: 100%; height: 520px" placeholder="Berberine Balance hero shot"></image-slot>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 14px">
+      <div class="washed" style="border-radius: 24px; overflow: hidden; background: var(--color-surface)">
+        <image-slot id="berb-t1" shape="rect" style="width: 100%; height: 150px" placeholder="Bottle detail"></image-slot>
+      </div>
+      <div class="washed" style="border-radius: 24px; overflow: hidden; background: var(--color-surface)">
+        <image-slot id="berb-t2" shape="rect" style="width: 100%; height: 150px" placeholder="Capsule in hand"></image-slot>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <span class="tag tag-accent-2" style="margin-bottom: 20px">Standardized botanical supplement</span>
+    <h1 style="font-size: 50px; line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 16px">Berberine Balance</h1>
+    <p style="font-size: 17px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 76%, transparent); margin: 0 0 28px">Berberine HCl standardized for purity — 500 mg target. Supports healthy glucose metabolism and everyday metabolic wellness.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px">
+      <div style="display: flex; gap: 10px; align-items: baseline"><span style="color: var(--color-accent-2-700); font-family: var(--font-heading)">·</span><span style="font-size: 14.5px; line-height: 1.55">Standardized extract with identity and purity testing on every batch</span></div>
+      <div style="display: flex; gap: 10px; align-items: baseline"><span style="color: var(--color-accent-2-700); font-family: var(--font-heading)">·</span><span style="font-size: 14.5px; line-height: 1.55">Formulated under the FSSAI Schedule IV botanical pathway</span></div>
+      <div style="display: flex; gap: 10px; align-items: baseline"><span style="color: var(--color-accent-2-700); font-family: var(--font-heading)">·</span><span style="font-size: 14.5px; line-height: 1.55">Designed to pair with TriFiber Daily, not to replace medical care</span></div>
+    </div>
+
+    <div style="background: var(--color-surface); border-radius: 34px; padding: 30px">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px">
+        <span style="font-family: var(--font-heading); font-size: 34px">{{ priceLabel }}</span>
+        <span style="font-size: 13px; color: color-mix(in srgb, var(--color-text) 58%, transparent)">{{ priceNote }}</span>
+      </div>
+      <p style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 62%, transparent); margin: 0 0 22px">60 capsules · 30-day supply · 500 mg target per serving</p>
+
+      <span style="display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin-bottom: 10px">Plan</span>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px">
+        <button onClick="{{ pickSub }}" ref="{{ planSub }}" style="text-align: left; cursor: pointer; border: 1.5px solid var(--color-divider); background: transparent; border-radius: 22px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; font: inherit; color: var(--color-text)">
+          <span style="width: 15px; height: 15px; border-radius: 999px; border: 1.5px solid var(--color-accent); flex: none"></span>
+          <span style="display: flex; flex-direction: column; gap: 2px">
+            <span style="font-family: var(--font-heading); font-size: 15px">Subscribe &amp; save 15%</span>
+            <span style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 60%, transparent)">Ships every 30 days · pause or cancel anytime</span>
+          </span>
+        </button>
+        <button onClick="{{ pickOnce }}" ref="{{ planOnce }}" style="text-align: left; cursor: pointer; border: 1.5px solid var(--color-divider); background: transparent; border-radius: 22px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; font: inherit; color: var(--color-text)">
+          <span style="width: 15px; height: 15px; border-radius: 999px; border: 1.5px solid var(--color-divider); flex: none"></span>
+          <span style="display: flex; flex-direction: column; gap: 2px">
+            <span style="font-family: var(--font-heading); font-size: 15px">One-time purchase</span>
+            <span style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 60%, transparent)">Try it once, no commitment</span>
+          </span>
+        </button>
+      </div>
+
+      <div style="display: flex; gap: 14px; align-items: center">
+        <div style="display: flex; align-items: center; gap: 12px; border: 1px solid var(--color-divider); border-radius: 999px; padding: 7px 14px">
+          <button onClick="{{ dec }}" style="border: 0; background: transparent; cursor: pointer; font-size: 16px; color: var(--color-text); line-height: 1">−</button>
+          <span style="font-size: 14px; min-width: 12px; text-align: center">{{ qty }}</span>
+          <button onClick="{{ inc }}" style="border: 0; background: transparent; cursor: pointer; font-size: 16px; color: var(--color-text); line-height: 1">+</button>
+        </div>
+        <button onClick="{{ addToCart }}" class="btn btn-primary" style="flex: 1; padding: 14px 24px; font-size: 15px">{{ ctaLabel }}</button>
+      </div>
+      <p style="font-size: 11.5px; color: color-mix(in srgb, var(--color-text) 52%, transparent); margin: 16px 0 0">Not suitable during pregnancy or breastfeeding. Speak to a clinician first if you take glucose-lowering or other prescription medication.</p>
+    </div>
+  </div>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 110px 40px 0">
+  <div style="border: 1.5px solid var(--color-accent-2-400); border-radius: 44px; padding: 60px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px">
+    <div>
+      <h6 style="color: var(--color-accent-2-700); margin-bottom: 14px">Responsible positioning</h6>
+      <h2 style="font-size: 34px; letter-spacing: -0.02em; margin: 0; text-wrap: pretty">Never marketed as “Natural Ozempic”.</h2>
+    </div>
+    <div>
+      <p style="font-size: 15.5px; line-height: 1.7; margin: 0 0 16px; color: color-mix(in srgb, var(--color-text) 80%, transparent)">Berberine is a botanical with a real research base and a real limit. It is not a GLP-1 drug, it does not work like one, and we will not imply otherwise to sell more of it.</p>
+      <p style="font-size: 15.5px; line-height: 1.7; margin: 0; color: color-mix(in srgb, var(--color-text) 80%, transparent)">Our claims policy is “prove more, claim less”: composition first, then function, then validated outcomes — each step supported by market-specific regulatory review before it appears on a pack or a page.</p>
+      <a href="Science.dc.html" class="btn btn-ghost" style="text-decoration: none; margin-top: 18px; padding-left: 0">How we handle evidence →</a>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--color-surface); margin-top: 120px; padding: 100px 40px">
+  <div style="max-width: 1240px; margin: 0 auto">
+    <h6 style="color: var(--color-accent-700); margin-bottom: 14px">Common questions</h6>
+    <h2 style="font-size: 38px; letter-spacing: -0.02em; margin: 0 0 46px; max-width: 560px; text-wrap: pretty">What people ask before their first bottle.</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px 60px">
+      <div><h4 style="font-size: 19px; margin: 0 0 8px">When should I take it?</h4><p style="font-size: 14.5px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">With your largest meal of the day. Splitting the serving across two meals is also common practice.</p></div>
+      <div><h4 style="font-size: 19px; margin: 0 0 8px">Can I take it with TriFiber Daily?</h4><p style="font-size: 14.5px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Yes — that's the intended routine. Fiber in the morning, berberine with your main meal.</p></div>
+      <div><h4 style="font-size: 19px; margin: 0 0 8px">Is this a weight-loss product?</h4><p style="font-size: 14.5px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">No. It is a food supplement positioned around everyday metabolic wellness, and it is not a substitute for prescription treatment.</p></div>
+      <div><h4 style="font-size: 19px; margin: 0 0 8px">How do I know what's in the bottle?</h4><p style="font-size: 14.5px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Each pack carries a QR code linking to that batch's identity and purity test results. <a href="Quality.dc.html">See an example report</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cart: null, plan: 'sub', qty: 1 };
+  refs = {};
+
+  componentDidMount() {
+    import('./cart.js').then(cart => this.setState({ cart }));
+    this.paint();
+  }
+  componentDidUpdate() { this.paint(); }
+
+  paint() {
+    const on = (el, active) => {
+      if (!el) return;
+      el.style.borderColor = active ? 'var(--color-accent)' : 'var(--color-divider)';
+      el.style.background = active ? 'color-mix(in srgb, var(--color-accent) 12%, transparent)' : 'transparent';
+      const dot = el.querySelector('span');
+      if (dot) {
+        dot.style.background = active ? 'var(--color-accent)' : 'transparent';
+        dot.style.boxShadow = active ? 'inset 0 0 0 4px var(--color-surface)' : 'none';
+        dot.style.borderColor = active ? 'var(--color-accent)' : 'var(--color-divider)';
+      }
+    };
+    on(this.refs.planSub, this.state.plan === 'sub');
+    on(this.refs.planOnce, this.state.plan === 'once');
+  }
+
+  renderVals() {
+    const p = this.state.plan === 'sub' ? 33 : 39;
+    const ref = k => el => { this.refs[k] = el; this.paint(); };
+    return {
+      priceLabel: '$' + p,
+      priceNote: this.state.plan === 'sub' ? '/ month on subscription — save 15%' : 'one-time purchase',
+      qty: this.state.qty,
+      ctaLabel: this.state.plan === 'sub' ? 'Subscribe — $' + p * this.state.qty : 'Add to cart — $' + p * this.state.qty,
+      planSub: ref('planSub'),
+      planOnce: ref('planOnce'),
+      pickSub: () => this.setState({ plan: 'sub' }),
+      pickOnce: () => this.setState({ plan: 'once' }),
+      inc: () => this.setState({ qty: this.state.qty + 1 }),
+      dec: () => this.setState({ qty: Math.max(1, this.state.qty - 1) }),
+      addToCart: () => {
+        if (!this.state.cart) return;
+        this.state.cart.add('berberine-30', this.state.plan, this.state.qty);
+        window.dispatchEvent(new CustomEvent('trifiber:opencart'));
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,85 +1,95 @@
-import React from 'react';
-import { Activity, ShieldCheck, Heart } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, ShieldCheck, Mail, ArrowRight } from 'lucide-react';
 
 export default function Footer({ setActiveTab }) {
+  const [email, setEmail] = useState('');
+  const [leadSuccess, setLeadSuccess] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+    try {
+      await fetch('/api/marketing/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, interest: 'both' })
+      });
+      setLeadSuccess(true);
+      setEmail('');
+    } catch (err) {
+      console.error('Lead capture error:', err);
+    }
+  };
+
   return (
-    <footer className="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-800 text-xs">
+    <footer className="bg-[#201e1d] text-[#f5ead8] py-16 border-t border-[#f5ead8]/10 text-left">
       <div className="container-max space-y-12">
         
         <div className="grid md:grid-cols-12 gap-8 items-start">
           
-          {/* Brand Info */}
+          {/* Brand Col */}
           <div className="md:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-emerald-400 font-bold">
-                <Activity className="w-5 h-5" />
-              </div>
-              <span className="font-serif font-bold text-xl text-slate-100">
-                TriFiber<span className="text-emerald-500 font-normal">Health</span>
-              </span>
+            <div className="font-serif text-3xl font-bold tracking-tight text-[#f5ead8]">
+              TriFiber<span className="text-[#c67139]">.</span>
             </div>
-
-            <p className="text-slate-400 text-xs max-w-sm font-sans leading-relaxed">
-              Everyday evidence-led metabolic nutrition for the post-GLP-1 era. Engineered multi-fiber blends and standardized botanicals built for long-term daily health habits.
+            <p className="text-sm text-[#f5ead8]/70 leading-relaxed max-w-sm">
+              Evidence-led everyday nutrition for gut and metabolic health in the post-GLP-1 era. Simple, daily habits engineered for long-term health.
             </p>
-
-            <div className="flex items-center gap-2 font-mono text-[11px] text-slate-500">
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
-              <span>ISO/IEC 17025 Tested • FSSAI Schedule VII & IV Compliant</span>
+            <div className="text-xs font-mono text-[#7a8a5e] uppercase tracking-wider font-semibold">
+              FSSAI Schedule IV & VII Compliant
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-3 space-y-3 font-mono">
-            <h4 className="text-xs font-bold uppercase text-slate-200 tracking-wider">Platform Tools</h4>
-            <ul className="space-y-2">
-              <li>
-                <button onClick={() => setActiveTab('products')} className="hover:text-emerald-400 transition-colors">
-                  Product Catalog
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('quiz')} className="hover:text-emerald-400 transition-colors">
-                  Metabolic Assessment Quiz
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('batch')} className="hover:text-emerald-400 transition-colors">
-                  Batch COA Transparency Portal
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('claims')} className="hover:text-emerald-400 transition-colors">
-                  FSSAI/FDA Claims Engine
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setActiveTab('marketing')} className="hover:text-emerald-400 transition-colors">
-                  Growth & Marketing AI
-                </button>
-              </li>
+          {/* Quick Links Col */}
+          <div className="md:col-span-3 space-y-3">
+            <h4 className="font-serif text-lg text-[#f5ead8] mb-2">Platform Navigation</h4>
+            <ul className="space-y-2 text-sm text-[#f5ead8]/70">
+              <li><button onClick={() => setActiveTab('home')} className="hover:text-[#c67139] transition-colors">Home</button></li>
+              <li><button onClick={() => setActiveTab('trifiber-daily')} className="hover:text-[#c67139] transition-colors">TriFiber Daily</button></li>
+              <li><button onClick={() => setActiveTab('berberine-balance')} className="hover:text-[#c67139] transition-colors">Berberine Balance</button></li>
+              <li><button onClick={() => setActiveTab('why-fiber')} className="hover:text-[#c67139] transition-colors">Why Fiber & Science</button></li>
+              <li><button onClick={() => setActiveTab('batch')} className="hover:text-[#c67139] transition-colors">Quality Batch QA</button></li>
+              <li><button onClick={() => setActiveTab('quiz')} className="hover:text-[#c67139] transition-colors">Metabolic Quiz</button></li>
             </ul>
           </div>
 
-          {/* Regulatory Disclaimer Box */}
-          <div className="md:col-span-4 space-y-3 bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-[11px] leading-relaxed font-sans">
-            <h4 className="font-mono font-bold text-amber-400 uppercase text-[10px]">Regulatory Disclosures</h4>
-            <p>
-              * These statements have not been evaluated by the Food and Drug Administration (FDA) or European Medicines Agency (EMA). This product is a dietary supplement under FSSAI Schedule VII (Prebiotics/Dietary Fiber) and Schedule IV (Botanicals). It is not intended to diagnose, treat, cure, or prevent any disease.
+          {/* Newsletter / VIP Lead Capture */}
+          <div className="md:col-span-4 space-y-4">
+            <h4 className="font-serif text-lg text-[#f5ead8]">Metabolic Insights Newsletter</h4>
+            <p className="text-xs text-[#f5ead8]/70">
+              Get 15% off your first order plus monthly clinical research updates on gut microbiome & glucose health.
             </p>
-            <p className="text-slate-500">
-              TriFiber Health does not replace prescription GLP-1 receptor agonist medications. Consult your physician before starting any dietary supplement regimen.
-            </p>
+
+            <form onSubmit={handleSubscribe} className="space-y-2">
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="input !bg-[#2e2b25] !text-[#f5ead8] !border-[#f5ead8]/20 flex-1 text-xs"
+                />
+                <button type="submit" className="btn btn-primary py-2 px-4 text-xs">
+                  <span>Join VIP</span>
+                </button>
+              </div>
+              {leadSuccess && (
+                <div className="text-xs text-[#7a8a5e] font-semibold">
+                  Welcome to the TriFiber Health VIP Community!
+                </div>
+              )}
+            </form>
           </div>
 
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-slate-600">
-          <p>© 2026 TriFiber Health Inc. All rights reserved.</p>
-          <div className="flex items-center gap-1">
-            <span>Built for gut & metabolic health with</span>
-            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline" />
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-[#f5ead8]/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#f5ead8]/50 gap-4">
+          <div>
+            TriFiber Health © 2026. Built in India, Designed for the World.
+          </div>
+          <div>
+            FSSAI License Compliant | Analytical QA verified by Eurofins & SGS
           </div>
         </div>
 

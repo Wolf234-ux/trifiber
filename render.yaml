@@ -1,0 +1,16 @@
+# Render Blueprint Specification for TriFiber Health Platform
+# Render automatically detects this file to provision and auto-deploy the Docker container service.
+# Reference: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: trifiber-health
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: singapore
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 10000

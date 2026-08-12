@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/styles.css">
+  <script src="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; }
+    a:hover { color: var(--color-accent-700); }
+  </style>
+</helmet>
+<dc-import name="SiteNav" current="journal" hint-size="100%,63px"></dc-import>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 90px 40px 0; display: flex; align-items: flex-end; gap: 60px">
+  <div>
+    <h6 style="color: var(--color-accent-700); margin-bottom: 18px">Journal</h6>
+    <h1 style="font-size: 58px; line-height: 1.04; letter-spacing: -0.025em; margin: 0; max-width: 760px; text-wrap: pretty">Notes on fiber, glucose and building this thing in the open.</h1>
+  </div>
+  <p style="font-size: 14.5px; line-height: 1.65; max-width: 300px; margin: 0 0 8px auto; color: color-mix(in srgb, var(--color-text) 68%, transparent)">Formulation updates, test results and plain explanations of the science we're standing on. The first pieces publish alongside launch.</p>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 60px 40px 0">
+  <article style="background: var(--color-surface); border-radius: 44px; padding: 46px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 50px; align-items: center">
+    <div>
+      <div style="display: flex; gap: 10px; margin-bottom: 20px">
+        <span class="tag tag-accent">Fiber</span>
+        <span class="tag tag-neutral">Editorial plan</span>
+      </div>
+      <h2 style="font-size: 36px; letter-spacing: -0.02em; margin: 0 0 14px; text-wrap: pretty">Why “more fiber” isn't one instruction</h2>
+      <p style="font-size: 15.5px; line-height: 1.7; margin: 0 0 22px; color: color-mix(in srgb, var(--color-text) 76%, transparent)">Soluble, insoluble and prebiotic fiber do three different jobs, and most products only do one of them. The opening piece walks through what each one actually changes and why the format matters as much as the gram count.</p>
+      <span style="font-size: 13px; color: color-mix(in srgb, var(--color-text) 58%, transparent)">Publishing at launch · 6 min read</span>
+    </div>
+    <div class="washed" style="border-radius: 34px; overflow: hidden">
+      <image-slot id="journal-feature" src="assets/photo.jpg" shape="rect" style="width: 100%; height: 340px" placeholder="Feature image"></image-slot>
+    </div>
+  </article>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 40px 40px 0">
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px">
+    <article style="display: flex; flex-direction: column; gap: 16px">
+      <div class="washed" style="border-radius: 30px; overflow: hidden; background: var(--color-surface)">
+        <image-slot id="journal-1" shape="rect" style="width: 100%; height: 220px" placeholder="Article image"></image-slot>
+      </div>
+      <span class="tag tag-accent-2" style="align-self: flex-start">Metabolic health</span>
+      <h3 style="font-size: 22px; margin: 0; text-wrap: pretty">Reading a glucose curve without panicking</h3>
+      <p style="font-size: 14px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-text) 72%, transparent)">What a post-meal rise means, what it doesn't, and where nutrition sits next to medication.</p>
+      <span style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 55%, transparent)">Publishing at launch</span>
+    </article>
+    <article style="display: flex; flex-direction: column; gap: 16px">
+      <div class="washed" style="border-radius: 30px; overflow: hidden; background: var(--color-surface)">
+        <image-slot id="journal-2" shape="rect" style="width: 100%; height: 220px" placeholder="Article image"></image-slot>
+      </div>
+      <span class="tag tag-accent" style="align-self: flex-start">Inside the lab</span>
+      <h3 style="font-size: 22px; margin: 0; text-wrap: pretty">Making a fiber drink people finish</h3>
+      <p style="font-size: 14px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-text) 72%, transparent)">Sensory trials, the Lemon-Jeera decision, and why texture is a compliance problem.</p>
+      <span style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 55%, transparent)">Publishing at launch</span>
+    </article>
+    <article style="display: flex; flex-direction: column; gap: 16px">
+      <div class="washed" style="border-radius: 30px; overflow: hidden; background: var(--color-surface)">
+        <image-slot id="journal-3" shape="rect" style="width: 100%; height: 220px" placeholder="Article image"></image-slot>
+      </div>
+      <span class="tag tag-neutral" style="align-self: flex-start">Standards</span>
+      <h3 style="font-size: 22px; margin: 0; text-wrap: pretty">What a batch report should tell you</h3>
+      <p style="font-size: 14px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-text) 72%, transparent)">How to read a certificate of analysis, and the tests most brands quietly skip.</p>
+      <span style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 55%, transparent)">Publishing at launch</span>
+    </article>
+  </div>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 110px 40px 0">
+  <div style="background: var(--color-accent-100); border-radius: 44px; padding: 60px; display: flex; align-items: center; gap: 40px; flex-wrap: wrap">
+    <div>
+      <h2 style="font-size: 30px; margin: 0 0 8px">Get each piece as it publishes.</h2>
+      <p style="font-size: 15px; margin: 0; color: color-mix(in srgb, var(--color-text) 72%, transparent)">Formulation updates and test results, roughly monthly.</p>
+    </div>
+    <form onSubmit="{{ onSignup }}" style="display: flex; gap: 10px; margin-left: auto">
+      <input class="input" type="email" required placeholder="you@email.com" style="min-width: 260px; background: var(--color-bg)">
+      <button type="submit" class="btn btn-primary" style="flex: none; padding: 11px 22px">{{ signupLabel }}</button>
+    </form>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { signed: false };
+  renderVals() {
+    return {
+      signupLabel: this.state.signed ? 'Subscribed ✓' : 'Subscribe',
+      onSignup: e => { e.preventDefault(); this.setState({ signed: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

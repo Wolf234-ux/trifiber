@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/styles.css">
+  <script src="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; }
+    a:hover { color: var(--color-accent-700); }
+  </style>
+</helmet>
+<dc-import name="SiteNav" current="contact" hint-size="100%,63px"></dc-import>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 90px 40px 0">
+  <h6 style="color: var(--color-accent-700); margin-bottom: 18px">Contact</h6>
+  <h1 style="font-size: 58px; line-height: 1.04; letter-spacing: -0.025em; margin: 0 0 24px; max-width: 760px; text-wrap: pretty">Tell us what you need and who you are.</h1>
+  <p style="font-size: 19px; line-height: 1.55; max-width: 560px; color: color-mix(in srgb, var(--color-text) 76%, transparent)">Customer questions, partnership enquiries, press and investor requests all land here.</p>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 60px 40px 0; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items: start">
+  <div style="background: var(--color-surface); border-radius: 44px; padding: 46px">
+    <span style="display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin-bottom: 12px">What's this about</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px">
+      <button onClick="{{ pick0 }}" ref="{{ t0 }}" class="btn btn-secondary" style="padding: 9px 18px">Product question</button>
+      <button onClick="{{ pick1 }}" ref="{{ t1 }}" class="btn btn-secondary" style="padding: 9px 18px">Order or subscription</button>
+      <button onClick="{{ pick2 }}" ref="{{ t2 }}" class="btn btn-secondary" style="padding: 9px 18px">Partnership</button>
+      <button onClick="{{ pick3 }}" ref="{{ t3 }}" class="btn btn-secondary" style="padding: 9px 18px">Press</button>
+      <button onClick="{{ pick4 }}" ref="{{ t4 }}" class="btn btn-secondary" style="padding: 9px 18px">Investor</button>
+    </div>
+    <form onSubmit="{{ onSubmit }}" style="display: flex; flex-direction: column; gap: 16px">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+        <div class="field"><label>Name</label><input class="input" required style="background: var(--color-bg)"></div>
+        <div class="field"><label>Email</label><input class="input" type="email" required style="background: var(--color-bg)"></div>
+      </div>
+      <div class="field"><label>Company or organisation (optional)</label><input class="input" style="background: var(--color-bg)"></div>
+      <div class="field"><label>Message</label><textarea class="input" required rows="5" value="{{ prefill }}" onChange="{{ onMsg }}" style="background: var(--color-bg); border-radius: 24px; padding: 14px 18px"></textarea></div>
+      <div style="display: flex; align-items: center; gap: 18px">
+        <button type="submit" class="btn btn-primary" style="padding: 13px 26px; font-size: 15px">{{ label }}</button>
+        <span style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 58%, transparent)">{{ note }}</span>
+      </div>
+    </form>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 18px">
+    <div style="border: 1.5px solid var(--color-divider); border-radius: 34px; padding: 32px">
+      <h4 style="font-size: 19px; margin: 0 0 8px">Customer care</h4>
+      <p style="font-size: 14px; line-height: 1.6; margin: 0 0 10px; color: color-mix(in srgb, var(--color-text) 72%, transparent)">Orders, subscriptions, deliveries and returns.</p>
+      <a href="Contact.dc.html" style="font-size: 14px">hello@trifiberhealth.com</a>
+    </div>
+    <div style="border: 1.5px solid var(--color-divider); border-radius: 34px; padding: 32px">
+      <h4 style="font-size: 19px; margin: 0 0 8px">Partnerships &amp; distribution</h4>
+      <p style="font-size: 14px; line-height: 1.6; margin: 0 0 10px; color: color-mix(in srgb, var(--color-text) 72%, transparent)">Retail, pharmacy, practitioners, corporate wellness and international distributors.</p>
+      <a href="Contact.dc.html" style="font-size: 14px">partners@trifiberhealth.com</a>
+    </div>
+    <div style="background: var(--color-accent-2-800); color: var(--color-bg); border-radius: 34px; padding: 32px">
+      <h4 style="font-size: 19px; margin: 0 0 8px; color: var(--color-bg)">Investors</h4>
+      <p style="font-size: 14px; line-height: 1.6; margin: 0 0 14px; color: color-mix(in srgb, var(--color-bg) 78%, transparent)">Pre-seed materials are shared on request with named investors.</p>
+      <a href="Investors.dc.html" class="btn" style="background: var(--color-bg); color: var(--color-accent-2-900); text-decoration: none; padding: 10px 20px">Investor page</a>
+    </div>
+    <p style="font-size: 12px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 52%, transparent); margin: 0">For anything clinical or medical, speak to a qualified professional. We cannot give medical advice or interpret individual test results.</p>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TOPICS = [
+  { key: 0, prefill: '' },
+  { key: 1, prefill: 'My order number is ' },
+  { key: 2, prefill: 'We are interested in distributing TriFiber in ' },
+  { key: 3, prefill: 'I am writing for ' },
+  { key: 4, prefill: 'I would like access to the pre-seed materials. ' }
+];
+
+class Component extends DCLogic {
+  state = { topic: 0, sent: false, msg: '' };
+  refs = {};
+
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+
+  paint() {
+    for (let i = 0; i < 5; i++) {
+      const el = this.refs['t' + i];
+      if (!el) continue;
+      const on = this.state.topic === i;
+      el.style.background = on ? 'var(--color-accent)' : 'transparent';
+      el.style.color = on ? 'var(--color-bg)' : 'var(--color-text)';
+      el.style.borderColor = on ? 'var(--color-accent)' : 'var(--color-divider)';
+    }
+  }
+
+  renderVals() {
+    const ref = k => el => { this.refs[k] = el; this.paint(); };
+    const pick = i => () => this.setState({ topic: i, sent: false, msg: TOPICS[i].prefill });
+    return {
+      t0: ref('t0'), t1: ref('t1'), t2: ref('t2'), t3: ref('t3'), t4: ref('t4'),
+      pick0: pick(0), pick1: pick(1), pick2: pick(2), pick3: pick(3), pick4: pick(4),
+      prefill: this.state.msg,
+      onMsg: e => this.setState({ msg: e.target.value }),
+      label: this.state.sent ? 'Message sent ✓' : 'Send message',
+      note: this.state.sent ? 'Thanks — we reply within two working days.' : 'We reply within two working days.',
+      onSubmit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

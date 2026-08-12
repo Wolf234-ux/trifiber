@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/styles.css">
+  <script src="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    body { margin: 0; }
+    a:hover { color: var(--color-accent-700); }
+  </style>
+</helmet>
+<dc-import name="SiteNav" current="daily" hint-size="100%,63px"></dc-import>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 60px 40px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start">
+  <div style="position: relative">
+    <div style="position: absolute; right: -10px; top: -20px; width: 120px; height: 120px; border-radius: 999px; background: var(--color-accent-200)"></div>
+    <div class="washed" style="position: relative; border-radius: 40px; overflow: hidden; box-shadow: var(--shadow-md)">
+      <image-slot id="daily-main" src="assets/photo.jpg" shape="rect" style="width: 100%; height: 520px" placeholder="TriFiber Daily hero shot"></image-slot>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px">
+      <div class="washed" style="border-radius: 24px; overflow: hidden; background: var(--color-surface)">
+        <image-slot id="daily-t1" shape="rect" style="width: 100%; height: 130px" placeholder="Sachet"></image-slot>
+      </div>
+      <div class="washed" style="border-radius: 24px; overflow: hidden; background: var(--color-surface)">
+        <image-slot id="daily-t2" shape="rect" style="width: 100%; height: 130px" placeholder="Scoop / texture"></image-slot>
+      </div>
+      <div class="washed" style="border-radius: 24px; overflow: hidden; background: var(--color-surface)">
+        <image-slot id="daily-t3" shape="rect" style="width: 100%; height: 130px" placeholder="In a glass"></image-slot>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <span class="tag tag-accent" style="margin-bottom: 20px">Daily multi-fiber drink</span>
+    <h1 style="font-size: 50px; line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 16px">TriFiber Daily</h1>
+    <p style="font-size: 17px; line-height: 1.6; color: color-mix(in srgb, var(--color-text) 76%, transparent); margin: 0 0 28px">Soluble + insoluble + prebiotic fiber in one scoop. Built to close the fiber gap — not just relieve constipation.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px">
+      <div style="display: flex; gap: 10px; align-items: baseline"><span style="color: var(--color-accent); font-family: var(--font-heading)">·</span><span style="font-size: 14.5px; line-height: 1.55">Three fiber types in one everyday format, not a single-source husk powder</span></div>
+      <div style="display: flex; gap: 10px; align-items: baseline"><span style="color: var(--color-accent); font-family: var(--font-heading)">·</span><span style="font-size: 14.5px; line-height: 1.55">Lemon-Jeera flavor, developed for Indian palates and daily repeatability</span></div>
+      <div style="display: flex; gap: 10px; align-items: baseline"><span style="color: var(--color-accent); font-family: var(--font-heading)">·</span><span style="font-size: 14.5px; line-height: 1.55">Sachets and jar formats — travel-friendly or at-home</span></div>
+      <div style="display: flex; gap: 10px; align-items: baseline"><span style="color: var(--color-accent); font-family: var(--font-heading)">·</span><span style="font-size: 14.5px; line-height: 1.55">Batch-tested with QR-linked results on every pack</span></div>
+    </div>
+
+    <div style="background: var(--color-surface); border-radius: 34px; padding: 30px">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 22px">
+        <span style="font-family: var(--font-heading); font-size: 34px">{{ priceLabel }}</span>
+        <span style="font-size: 13px; color: color-mix(in srgb, var(--color-text) 58%, transparent)">{{ priceNote }}</span>
+      </div>
+
+      <span style="display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin-bottom: 10px">Format</span>
+      <div style="display: flex; gap: 10px; margin-bottom: 22px">
+        <button onClick="{{ pickSachets }}" ref="{{ fmtSachets }}" class="btn btn-secondary" style="padding: 10px 18px">30 sachets</button>
+        <button onClick="{{ pickJar }}" ref="{{ fmtJar }}" class="btn btn-secondary" style="padding: 10px 18px">300 g jar</button>
+      </div>
+
+      <span style="display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin-bottom: 10px">Plan</span>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px">
+        <button onClick="{{ pickSub }}" ref="{{ planSub }}" style="text-align: left; cursor: pointer; border: 1.5px solid var(--color-divider); background: transparent; border-radius: 22px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; font: inherit; color: var(--color-text)">
+          <span style="width: 15px; height: 15px; border-radius: 999px; border: 1.5px solid var(--color-accent); flex: none"></span>
+          <span style="display: flex; flex-direction: column; gap: 2px">
+            <span style="font-family: var(--font-heading); font-size: 15px">Subscribe &amp; save 15%</span>
+            <span style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 60%, transparent)">Ships every 30 days · pause or cancel anytime</span>
+          </span>
+        </button>
+        <button onClick="{{ pickOnce }}" ref="{{ planOnce }}" style="text-align: left; cursor: pointer; border: 1.5px solid var(--color-divider); background: transparent; border-radius: 22px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; font: inherit; color: var(--color-text)">
+          <span style="width: 15px; height: 15px; border-radius: 999px; border: 1.5px solid var(--color-divider); flex: none"></span>
+          <span style="display: flex; flex-direction: column; gap: 2px">
+            <span style="font-family: var(--font-heading); font-size: 15px">One-time purchase</span>
+            <span style="font-size: 12.5px; color: color-mix(in srgb, var(--color-text) 60%, transparent)">Try it once, no commitment</span>
+          </span>
+        </button>
+      </div>
+
+      <div style="display: flex; gap: 14px; align-items: center">
+        <div style="display: flex; align-items: center; gap: 12px; border: 1px solid var(--color-divider); border-radius: 999px; padding: 7px 14px">
+          <button onClick="{{ dec }}" style="border: 0; background: transparent; cursor: pointer; font-size: 16px; color: var(--color-text); line-height: 1">−</button>
+          <span style="font-size: 14px; min-width: 12px; text-align: center">{{ qty }}</span>
+          <button onClick="{{ inc }}" style="border: 0; background: transparent; cursor: pointer; font-size: 16px; color: var(--color-text); line-height: 1">+</button>
+        </div>
+        <button onClick="{{ addToCart }}" class="btn btn-primary" style="flex: 1; padding: 14px 24px; font-size: 15px">{{ ctaLabel }}</button>
+      </div>
+      <p style="font-size: 11.5px; color: color-mix(in srgb, var(--color-text) 52%, transparent); margin: 16px 0 0">Free shipping over $50. Pricing is indicative and varies by market — India ₹999–1,299 · UAE AED 89–129 · US $24–39.</p>
+    </div>
+  </div>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 120px 40px 0">
+  <h6 style="color: var(--color-accent-700); margin-bottom: 14px">What's inside</h6>
+  <h2 style="font-size: 38px; letter-spacing: -0.02em; margin: 0 0 46px; max-width: 620px; text-wrap: pretty">Three fiber jobs, one scoop.</h2>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px">
+    <div style="background: var(--color-accent-100); border-radius: 32px; padding: 34px">
+      <span style="width: 46px; height: 46px; border-radius: 999px; background: var(--color-accent); display: block; margin-bottom: 22px"></span>
+      <h4 style="font-size: 21px; margin: 0 0 10px">Soluble fiber</h4>
+      <p style="font-size: 14px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Forms a gel in the gut, which is the mechanism behind slower digestion and a fuller feeling after meals.</p>
+    </div>
+    <div style="background: var(--color-accent-2-100); border-radius: 32px; padding: 34px">
+      <span style="width: 46px; height: 46px; border-radius: 999px; background: var(--color-accent-2); display: block; margin-bottom: 22px"></span>
+      <h4 style="font-size: 21px; margin: 0 0 10px">Insoluble fiber</h4>
+      <p style="font-size: 14px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Adds bulk and supports regularity — the part most fiber products stop at.</p>
+    </div>
+    <div style="background: var(--color-neutral-200); border-radius: 32px; padding: 34px">
+      <span style="width: 46px; height: 46px; border-radius: 999px; background: var(--color-neutral-500); display: block; margin-bottom: 22px"></span>
+      <h4 style="font-size: 21px; margin: 0 0 10px">Prebiotic fiber</h4>
+      <p style="font-size: 14px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Feeds the bacteria already living in your gut, joining the probiotic conversation from the other side.</p>
+    </div>
+  </div>
+  <p style="font-size: 13px; color: color-mix(in srgb, var(--color-text) 55%, transparent); margin: 22px 0 0">Final ingredient list, per-scoop fiber grams and nutrition panel publish when formulation locks. See the <a href="Investors.dc.html">development roadmap</a>.</p>
+</section>
+
+<section style="background: var(--color-surface); margin-top: 120px; padding: 100px 40px">
+  <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 70px; align-items: start">
+    <div>
+      <h6 style="color: var(--color-accent-700); margin-bottom: 14px">How to use</h6>
+      <h2 style="font-size: 36px; letter-spacing: -0.02em; margin: 0 0 16px; text-wrap: pretty">One scoop. Cold water. Morning.</h2>
+      <p style="font-size: 15px; line-height: 1.65; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Fiber works on frequency, not intensity. The routine matters more than the dose, which is why taste and texture were engineered first.</p>
+    </div>
+    <div style="display: flex; flex-direction: column">
+      <div style="display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent)">
+        <span style="font-family: var(--font-heading); font-size: 15px; color: var(--color-accent-700); min-width: 40px">01</span>
+        <div><h4 style="font-size: 18px; margin: 0 0 4px">Stir into 250 ml water</h4><p style="font-size: 14px; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent)">Cold or room temperature. Lemon-Jeera is savoury-citrus, not sweet.</p></div>
+      </div>
+      <div style="display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent)">
+        <span style="font-family: var(--font-heading); font-size: 15px; color: var(--color-accent-700); min-width: 40px">02</span>
+        <div><h4 style="font-size: 18px; margin: 0 0 4px">Drink it within a few minutes</h4><p style="font-size: 14px; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent)">Soluble fiber thickens as it sits, so fresh is better.</p></div>
+      </div>
+      <div style="display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent)">
+        <span style="font-family: var(--font-heading); font-size: 15px; color: var(--color-accent-700); min-width: 40px">03</span>
+        <div><h4 style="font-size: 18px; margin: 0 0 4px">Build up over the first week</h4><p style="font-size: 14px; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent)">Start with half a scoop if you're new to added fiber, and keep water intake up.</p></div>
+      </div>
+      <div style="display: flex; gap: 24px; padding: 24px 0">
+        <span style="font-family: var(--font-heading); font-size: 15px; color: var(--color-accent-700); min-width: 40px">04</span>
+        <div><h4 style="font-size: 18px; margin: 0 0 4px">Pair with Berberine Balance at your largest meal</h4><p style="font-size: 14px; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent)">Optional. <a href="Berberine.dc.html">See how the two work together</a>.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 110px 40px 0">
+  <div style="display: flex; align-items: center; gap: 40px; background: var(--color-accent-2-800); color: var(--color-bg); border-radius: 44px; padding: 60px">
+    <div>
+      <h2 style="font-size: 32px; margin: 0 0 10px; color: var(--color-bg)">Add Berberine Balance</h2>
+      <p style="font-size: 15px; margin: 0; color: color-mix(in srgb, var(--color-bg) 78%, transparent); max-width: 540px">TriFiber builds the daily habit. Berberine deepens it — standardized botanical support for glucose metabolism, taken with your largest meal.</p>
+    </div>
+    <a href="Berberine.dc.html" class="btn" style="margin-left: auto; flex: none; background: var(--color-bg); color: var(--color-accent-2-900); text-decoration: none; padding: 13px 24px; font-size: 15px">View Berberine Balance</a>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cart: null, plan: 'sub', fmt: 'daily-sachets', qty: 1 };
+  refs = {};
+
+  componentDidMount() {
+    import('./cart.js').then(cart => this.setState({ cart }));
+    this.paint();
+  }
+  componentDidUpdate() { this.paint(); }
+
+  paint() {
+    const on = (el, active, accent) => {
+      if (!el) return;
+      el.style.borderColor = active ? 'var(--color-accent)' : 'var(--color-divider)';
+      el.style.background = active ? (accent || 'color-mix(in srgb, var(--color-accent) 12%, transparent)') : 'transparent';
+      const dot = el.querySelector('span');
+      if (dot && dot.style.borderRadius === '999px') {
+        dot.style.boxShadow = active ? 'inset 0 0 0 4px var(--color-surface)' : 'none';
+        dot.style.background = active ? 'var(--color-accent)' : 'transparent';
+        dot.style.borderColor = active ? 'var(--color-accent)' : 'var(--color-divider)';
+      }
+    };
+    on(this.refs.fmtSachets, this.state.fmt === 'daily-sachets');
+    on(this.refs.fmtJar, this.state.fmt === 'daily-jar');
+    on(this.refs.planSub, this.state.plan === 'sub');
+    on(this.refs.planOnce, this.state.plan === 'once');
+  }
+
+  set = patch => this.setState(patch);
+
+  renderVals() {
+    const prices = { 'daily-sachets': { sub: 29, once: 34 }, 'daily-jar': { sub: 33, once: 39 } };
+    const p = prices[this.state.fmt][this.state.plan];
+    const ref = k => el => { this.refs[k] = el; this.paint(); };
+    return {
+      priceLabel: '$' + p,
+      priceNote: this.state.plan === 'sub' ? '/ month on subscription — save 15%' : 'one-time purchase',
+      qty: this.state.qty,
+      ctaLabel: this.state.plan === 'sub' ? 'Subscribe — $' + p * this.state.qty : 'Add to cart — $' + p * this.state.qty,
+      fmtSachets: ref('fmtSachets'),
+      fmtJar: ref('fmtJar'),
+      planSub: ref('planSub'),
+      planOnce: ref('planOnce'),
+      pickSachets: () => this.set({ fmt: 'daily-sachets' }),
+      pickJar: () => this.set({ fmt: 'daily-jar' }),
+      pickSub: () => this.set({ plan: 'sub' }),
+      pickOnce: () => this.set({ plan: 'once' }),
+      inc: () => this.set({ qty: this.state.qty + 1 }),
+      dec: () => this.set({ qty: Math.max(1, this.state.qty - 1) }),
+      addToCart: () => {
+        if (!this.state.cart) return;
+        this.state.cart.add(this.state.fmt, this.state.plan, this.state.qty);
+        window.dispatchEvent(new CustomEvent('trifiber:opencart'));
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

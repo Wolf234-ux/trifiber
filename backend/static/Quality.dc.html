@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/styles.css">
+  <script src="_ds/organic-c6c89eb5-efad-46f6-a93c-57f2d5780ae2/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; }
+    a:hover { color: var(--color-accent-700); }
+  </style>
+</helmet>
+<dc-import name="SiteNav" current="quality" hint-size="100%,63px"></dc-import>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 90px 40px 0">
+  <h6 style="color: var(--color-accent-700); margin-bottom: 18px">Quality &amp; transparency</h6>
+  <h1 style="font-size: 60px; line-height: 1.03; letter-spacing: -0.025em; margin: 0 0 24px; max-width: 860px; text-wrap: pretty">Every pack tells you what's in it — by batch.</h1>
+  <p style="font-size: 19px; line-height: 1.55; max-width: 600px; color: color-mix(in srgb, var(--color-text) 76%, transparent)">Batch-level testing with QR-linked quality data. Scan the pack, or look up a batch code below.</p>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 60px 40px 0">
+  <div style="background: var(--color-surface); border-radius: 44px; padding: 46px; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 60px; align-items: start">
+    <div>
+      <h3 style="font-size: 26px; margin: 0 0 12px">Batch lookup</h3>
+      <p style="font-size: 14.5px; line-height: 1.65; margin: 0 0 22px; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Enter the batch code printed beside the expiry date. Sample codes: <strong>TFD-0142</strong> or <strong>BRB-0087</strong>.</p>
+      <form onSubmit="{{ onLookup }}" style="display: flex; gap: 10px">
+        <input class="input" value="{{ code }}" onChange="{{ onType }}" placeholder="TFD-0142" style="background: var(--color-bg)">
+        <button type="submit" class="btn btn-primary" style="flex: none; padding: 10px 22px">Look up</button>
+      </form>
+      <p style="font-size: 12.5px; margin: 14px 0 0; color: color-mix(in srgb, var(--color-text) 58%, transparent)">{{ hint }}</p>
+    </div>
+    <div style="background: var(--color-bg); border-radius: 34px; padding: 36px">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px">
+        <h4 style="font-size: 22px; margin: 0">{{ report.product }}</h4>
+        <span class="tag tag-accent-2" style="margin-left: auto">{{ report.status }}</span>
+      </div>
+      <p style="font-size: 13px; color: color-mix(in srgb, var(--color-text) 60%, transparent); margin: 0 0 24px">Batch {{ report.batch }} · manufactured {{ report.made }} · best before {{ report.expiry }}</p>
+      <table class="table">
+        <thead><tr><th>Test</th><th>Specification</th><th>Result</th></tr></thead>
+        <tbody>
+          <sc-for list="{{ report.rows }}" as="row" hint-placeholder-count="5">
+            <tr>
+              <td style="font-family: var(--font-heading); font-size: 14px">{{ row.test }}</td>
+              <td style="font-size: 13.5px; color: color-mix(in srgb, var(--color-text) 68%, transparent)">{{ row.spec }}</td>
+              <td style="font-size: 13.5px">{{ row.result }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+      <p style="font-size: 11.5px; color: color-mix(in srgb, var(--color-text) 52%, transparent); margin: 20px 0 0">Illustrative report format shown pre-launch. Live certificates of analysis publish from the first commercial batch.</p>
+    </div>
+  </div>
+</section>
+
+<section style="max-width: 1240px; margin: 0 auto; padding: 120px 40px 0">
+  <h6 style="color: var(--color-accent-700); margin-bottom: 14px">What we test</h6>
+  <h2 style="font-size: 38px; letter-spacing: -0.02em; margin: 0 0 46px; max-width: 620px; text-wrap: pretty">Identity, purity, potency, and whether it survives the shelf.</h2>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px">
+    <div style="border-top: 2px solid var(--color-accent); padding-top: 24px">
+      <h4 style="font-size: 21px; margin: 0 0 10px">Identity &amp; standardization</h4>
+      <p style="font-size: 14.5px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Berberine HCl standardized against a defined specification, with purity testing built into the R&amp;D protocol rather than delegated to a supplier certificate.</p>
+    </div>
+    <div style="border-top: 2px solid var(--color-accent-2); padding-top: 24px">
+      <h4 style="font-size: 21px; margin: 0 0 10px">Viability through shelf life</h4>
+      <p style="font-size: 14.5px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Probiotic strain viability designed to hold ≥ 10⁶ CFU/g through shelf life — not just at the moment of manufacture.</p>
+    </div>
+    <div style="border-top: 2px solid var(--color-accent); padding-top: 24px">
+      <h4 style="font-size: 21px; margin: 0 0 10px">Contaminant screening</h4>
+      <p style="font-size: 14.5px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Heavy metals, microbial load and pesticide residues screened per batch against market-specific limits.</p>
+    </div>
+    <div style="border-top: 2px solid var(--color-accent-2); padding-top: 24px">
+      <h4 style="font-size: 21px; margin: 0 0 10px">Sensory &amp; tolerability</h4>
+      <p style="font-size: 14.5px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-text) 74%, transparent)">Taste, texture and tolerability tracked as release criteria, because a product people stop drinking does nothing.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--color-accent-2-800); color: var(--color-bg); margin-top: 120px; padding: 100px 40px">
+  <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 70px; align-items: start">
+    <div>
+      <h2 style="font-size: 36px; letter-spacing: -0.02em; margin: 0 0 16px; color: var(--color-bg); text-wrap: pretty">Formulas can be copied. Our system is harder to copy.</h2>
+      <p style="font-size: 15px; line-height: 1.65; margin: 0; color: color-mix(in srgb, var(--color-bg) 76%, transparent)">Six things compound over time, and none of them are the ingredient list.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px 40px">
+      <div><span style="font-family: var(--font-heading); font-size: 12.5px; letter-spacing: 0.08em; color: color-mix(in srgb, var(--color-bg) 60%, transparent)">01</span><h4 style="font-size: 18px; margin: 8px 0 6px; color: var(--color-bg)">Product experience</h4><p style="font-size: 13.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-bg) 74%, transparent)">Taste, texture and tolerability engineered in — not bolted on.</p></div>
+      <div><span style="font-family: var(--font-heading); font-size: 12.5px; letter-spacing: 0.08em; color: color-mix(in srgb, var(--color-bg) 60%, transparent)">02</span><h4 style="font-size: 18px; margin: 8px 0 6px; color: var(--color-bg)">Evidence</h4><p style="font-size: 13.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-bg) 74%, transparent)">Product-specific consumer and clinical data, not just ingredient literature.</p></div>
+      <div><span style="font-family: var(--font-heading); font-size: 12.5px; letter-spacing: 0.08em; color: color-mix(in srgb, var(--color-bg) 60%, transparent)">03</span><h4 style="font-size: 18px; margin: 8px 0 6px; color: var(--color-bg)">Trust &amp; transparency</h4><p style="font-size: 13.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-bg) 74%, transparent)">Batch-level testing with QR-linked quality data.</p></div>
+      <div><span style="font-family: var(--font-heading); font-size: 12.5px; letter-spacing: 0.08em; color: color-mix(in srgb, var(--color-bg) 60%, transparent)">04</span><h4 style="font-size: 18px; margin: 8px 0 6px; color: var(--color-bg)">Regulatory infrastructure</h4><p style="font-size: 13.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-bg) 74%, transparent)">Market-specific claims architecture for India, UAE, US and EU.</p></div>
+      <div><span style="font-family: var(--font-heading); font-size: 12.5px; letter-spacing: 0.08em; color: color-mix(in srgb, var(--color-bg) 60%, transparent)">05</span><h4 style="font-size: 18px; margin: 8px 0 6px; color: var(--color-bg)">Community</h4><p style="font-size: 13.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-bg) 74%, transparent)">Owning the everyday conversation on metabolic maintenance.</p></div>
+      <div><span style="font-family: var(--font-heading); font-size: 12.5px; letter-spacing: 0.08em; color: color-mix(in srgb, var(--color-bg) 60%, transparent)">06</span><h4 style="font-size: 18px; margin: 8px 0 6px; color: var(--color-bg)">Disciplined claims</h4><p style="font-size: 13.5px; line-height: 1.6; margin: 0; color: color-mix(in srgb, var(--color-bg) 74%, transparent)">“Prove more, claim less” — composition, then function, then validated outcomes.</p></div>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const REPORTS = {
+  'TFD-0142': {
+    product: 'TriFiber Daily · 30 sachets',
+    batch: 'TFD-0142',
+    made: 'Mar 2026',
+    expiry: 'Mar 2028',
+    status: 'Released',
+    rows: [
+      { test: 'Total dietary fiber', spec: 'Per label declaration', result: 'Conforms' },
+      { test: 'Prebiotic fraction', spec: 'Within specification range', result: 'Conforms' },
+      { test: 'Probiotic viability', spec: '≥ 10⁶ CFU/g at release', result: 'Conforms' },
+      { test: 'Heavy metals', spec: 'Below market limits', result: 'Pass' },
+      { test: 'Microbial load', spec: 'Below market limits', result: 'Pass' },
+      { test: 'Sensory panel', spec: 'Release criteria met', result: 'Pass' }
+    ]
+  },
+  'BRB-0087': {
+    product: 'Berberine Balance · 60 capsules',
+    batch: 'BRB-0087',
+    made: 'Feb 2026',
+    expiry: 'Feb 2028',
+    status: 'Released',
+    rows: [
+      { test: 'Berberine HCl identity', spec: 'Reference standard match', result: 'Conforms' },
+      { test: 'Standardized content', spec: '500 mg per serving target', result: 'Conforms' },
+      { test: 'Purity', spec: 'Within specification', result: 'Conforms' },
+      { test: 'Heavy metals', spec: 'Below market limits', result: 'Pass' },
+      { test: 'Pesticide residues', spec: 'Below market limits', result: 'Pass' },
+      { test: 'Dissolution', spec: 'Release criteria met', result: 'Pass' }
+    ]
+  }
+};
+
+class Component extends DCLogic {
+  state = { code: 'TFD-0142', shown: 'TFD-0142', error: '' };
+
+  renderVals() {
+    return {
+      code: this.state.code,
+      hint: this.state.error || 'Showing batch ' + this.state.shown + '.',
+      report: REPORTS[this.state.shown],
+      onType: e => this.setState({ code: e.target.value }),
+      onLookup: e => {
+        e.preventDefault();
+        const key = (this.state.code || '').trim().toUpperCase();
+        if (REPORTS[key]) this.setState({ shown: key, error: '', code: key });
+        else this.setState({ error: 'No batch found for “' + key + '”. Try TFD-0142 or BRB-0087.' });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

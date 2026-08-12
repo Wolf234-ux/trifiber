@@ -1,125 +1,113 @@
 import React from 'react';
-import { ShoppingBag, Sparkles, Activity, ShieldCheck, FileCheck, Layers, ChevronRight } from 'lucide-react';
+import { ShoppingBag, ChevronDown, Sparkles } from 'lucide-react';
 
 export default function Navbar({ currency, setCurrency, cartCount, setIsCartOpen, activeTab, setActiveTab }) {
   return (
-    <header className="sticky top-0 z-50 glass-panel border-b border-slate-200/80 transition-all">
+    <header className="sticky top-0 z-50 bg-[#f5ead8]/90 backdrop-blur-md border-b border-[#201e1d]/10 transition-all">
       <div className="container-max flex items-center justify-between h-20">
         
         {/* Brand Logo */}
-        <div 
-          onClick={() => setActiveTab('products')} 
-          className="flex items-center gap-3 cursor-pointer group"
+        <button 
+          onClick={() => setActiveTab('home')}
+          className="flex flex-col items-start text-left group focus:outline-none"
         >
-          <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-emerald-400 font-bold shadow-md group-hover:scale-105 transition-transform">
-            <Activity className="w-5 h-5 text-emerald-400" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-serif font-bold text-xl tracking-tight text-slate-900">
-                TriFiber<span className="text-emerald-600 font-normal">Health</span>
-              </span>
-              <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold border border-emerald-200">
-                Post-GLP-1
-              </span>
-            </div>
-            <p className="text-[11px] font-mono text-slate-500 tracking-wider uppercase font-medium">
-              Better Gut • Better Metabolism
-            </p>
-          </div>
-        </div>
+          <span className="font-serif text-2xl font-bold tracking-tight text-[#201e1d] group-hover:text-[#c67139] transition-colors">
+            TriFiber<span className="text-[#c67139] ml-1">.</span>
+          </span>
+          <span className="text-[10px] font-mono tracking-widest text-[#7a8a5e] uppercase font-semibold">
+            Gut + Metabolic Health
+          </span>
+        </button>
 
         {/* Navigation Tabs */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60">
+        <nav className="hidden lg:flex items-center gap-6 font-sans text-sm font-medium text-[#201e1d]/80">
           <button
-            onClick={() => setActiveTab('products')}
-            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
-              activeTab === 'products'
-                ? 'bg-slate-900 text-white shadow-sm'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
-            }`}
+            onClick={() => setActiveTab('home')}
+            className={`transition-colors hover:text-[#c67139] py-1 ${activeTab === 'home' ? 'text-[#c67139] font-bold border-b-2 border-[#c67139]' : ''}`}
           >
-            Formulas
+            Home
           </button>
-          
           <button
-            onClick={() => setActiveTab('quiz')}
-            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 ${
-              activeTab === 'quiz'
-                ? 'bg-slate-900 text-white shadow-sm'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
-            }`}
+            onClick={() => setActiveTab('trifiber-daily')}
+            className={`transition-colors hover:text-[#c67139] py-1 ${activeTab === 'trifiber-daily' ? 'text-[#c67139] font-bold border-b-2 border-[#c67139]' : ''}`}
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            Metabolic Quiz
+            TriFiber Daily
           </button>
-
+          <button
+            onClick={() => setActiveTab('berberine-balance')}
+            className={`transition-colors hover:text-[#c67139] py-1 ${activeTab === 'berberine-balance' ? 'text-[#c67139] font-bold border-b-2 border-[#c67139]' : ''}`}
+          >
+            Berberine Balance
+          </button>
+          <button
+            onClick={() => setActiveTab('why-fiber')}
+            className={`transition-colors hover:text-[#c67139] py-1 ${activeTab === 'why-fiber' ? 'text-[#c67139] font-bold border-b-2 border-[#c67139]' : ''}`}
+          >
+            Why Fiber & Science
+          </button>
           <button
             onClick={() => setActiveTab('batch')}
-            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 ${
-              activeTab === 'batch'
-                ? 'bg-slate-900 text-white shadow-sm'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
-            }`}
+            className={`transition-colors hover:text-[#c67139] py-1 ${activeTab === 'batch' ? 'text-[#c67139] font-bold border-b-2 border-[#c67139]' : ''}`}
           >
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-            Batch COA Portal
+            Quality QA
           </button>
-
           <button
-            onClick={() => setActiveTab('claims')}
-            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 ${
-              activeTab === 'claims'
-                ? 'bg-slate-900 text-white shadow-sm'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
-            }`}
+            onClick={() => setActiveTab('quiz')}
+            className={`transition-colors hover:text-[#c67139] py-1 ${activeTab === 'quiz' ? 'text-[#c67139] font-bold border-b-2 border-[#c67139]' : ''}`}
           >
-            <FileCheck className="w-3.5 h-3.5 text-blue-500" />
-            Claims Engine
+            Quiz
           </button>
-
           <button
             onClick={() => setActiveTab('marketing')}
-            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 ${
-              activeTab === 'marketing'
-                ? 'bg-slate-900 text-white shadow-sm'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50'
-            }`}
+            className={`transition-colors hover:text-[#c67139] py-1 ${activeTab === 'marketing' ? 'text-[#c67139] font-bold border-b-2 border-[#c67139]' : ''}`}
           >
-            <Layers className="w-3.5 h-3.5 text-purple-400" />
-            Growth AI
+            AI Suite
           </button>
         </nav>
 
-        {/* Currency Switcher & Cart Trigger */}
-        <div className="flex items-center gap-3">
+        {/* Right Actions */}
+        <div className="flex items-center gap-4">
           
+          {/* Currency Selector */}
           <div className="relative">
             <select
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-xs font-mono font-bold text-slate-800 shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+              className="appearance-none bg-[#ebddc5] border border-[#201e1d]/15 text-[#201e1d] text-xs font-mono font-semibold py-1.5 px-3 pr-7 rounded-full cursor-pointer hover:border-[#c67139] transition-all focus:outline-none"
             >
-              <option value="INR">🇮🇳 INR (₹)</option>
-              <option value="USD">🇺🇸 USD ($)</option>
-              <option value="AED">🇦🇪 AED (AED)</option>
+              <option value="INR">₹ INR</option>
+              <option value="USD">$ USD</option>
+              <option value="AED">AED</option>
             </select>
+            <ChevronDown className="w-3.5 h-3.5 text-[#201e1d]/60 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
 
+          {/* Cart Trigger */}
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative flex items-center justify-center p-2.5 rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-md active:scale-95"
-            aria-label="Shopping Cart"
+            className="btn btn-primary relative group !py-2 !px-4"
           >
-            <ShoppingBag className="w-5 h-5 text-emerald-400" />
+            <ShoppingBag className="w-4 h-4" />
+            <span className="hidden sm:inline">Cart</span>
             {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-amber-500 text-slate-950 font-mono font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
+              <span className="ml-1 bg-[#201e1d] text-[#f5ead8] text-xs font-mono font-bold w-5 h-5 rounded-full flex items-center justify-center">
                 {cartCount}
               </span>
             )}
           </button>
         </div>
 
+      </div>
+
+      {/* Mobile Tab Bar */}
+      <div className="lg:hidden flex items-center overflow-x-auto gap-4 px-4 py-2 border-t border-[#201e1d]/10 text-xs font-medium no-scrollbar">
+        <button onClick={() => setActiveTab('home')} className={`shrink-0 ${activeTab === 'home' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>Home</button>
+        <button onClick={() => setActiveTab('trifiber-daily')} className={`shrink-0 ${activeTab === 'trifiber-daily' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>TriFiber Daily</button>
+        <button onClick={() => setActiveTab('berberine-balance')} className={`shrink-0 ${activeTab === 'berberine-balance' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>Berberine Balance</button>
+        <button onClick={() => setActiveTab('why-fiber')} className={`shrink-0 ${activeTab === 'why-fiber' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>Science</button>
+        <button onClick={() => setActiveTab('batch')} className={`shrink-0 ${activeTab === 'batch' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>Batch QA</button>
+        <button onClick={() => setActiveTab('quiz')} className={`shrink-0 ${activeTab === 'quiz' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>Quiz</button>
+        <button onClick={() => setActiveTab('marketing')} className={`shrink-0 ${activeTab === 'marketing' ? 'text-[#c67139] font-bold' : 'text-[#201e1d]/70'}`}>AI Suite</button>
       </div>
     </header>
   );

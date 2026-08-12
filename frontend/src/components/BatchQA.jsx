@@ -1,207 +1,135 @@
-import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Search, FileText, CheckCircle, RefreshCw, AlertCircle, Award } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, ShieldCheck, CheckCircle2, FileText, ExternalLink } from 'lucide-react';
 
 export default function BatchQA() {
-  const [batchIdInput, setBatchIdInput] = useState('TFH-2026-B001');
-  const [batchData, setBatchData] = useState(null);
+  const [batchId, setBatchId] = useState('TFH-2026-B001');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [batchData, setBatchData] = useState(null);
 
   const fetchBatch = async (idToFetch) => {
     setLoading(true);
-    setError(null);
     try {
       const res = await fetch(`/api/batch/${idToFetch.trim()}`);
-      if (!res.ok) {
-        throw new Error('Batch record not found in COA registry');
-      }
       const data = await res.json();
       setBatchData(data);
     } catch (err) {
-      setError(err.message);
-      setBatchData(null);
+      console.error('Batch fetch error:', err);
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchBatch('TFH-2026-B001');
-  }, []);
-
   const handleSearch = (e) => {
     e.preventDefault();
-    if (batchIdInput) {
-      fetchBatch(batchIdInput);
-    }
+    if (batchId) fetchBatch(batchId);
   };
 
   return (
-    <section id="batch" className="py-20 bg-[#FAF8F5]">
+    <section className="py-16 bg-[#f5ead8]">
       <div className="container-max">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-mono font-semibold uppercase tracking-wider">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Uncompromising Quality Standard</span>
+        <div className="max-w-4xl mx-auto space-y-8 text-left">
+          
+          <div className="space-y-3 text-center sm:text-left">
+            <span className="tag tag-accent-2">100% Quality Transparency</span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#201e1d]">
+              Batch Quality Assurance & Certificate of Analysis
+            </h2>
+            <p className="text-sm text-[#201e1d]/75 max-w-2xl">
+              Every jar and sachet pouch printed with a unique QR code linked directly to Eurofins & SGS third-party lab test verification reports.
+            </p>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
-            Batch Quality & COA Transparency Portal
-          </h2>
-
-          <p className="text-slate-600 text-base">
-            Every production batch undergoes 3rd-party independent analytical testing by ISO/IEC 17025 accredited laboratories (Eurofins & SGS). Enter your batch number printed on the bottom of your box or jar below.
-          </p>
-        </div>
-
-        {/* Search Bar & Sample Presets */}
-        <div className="max-w-2xl mx-auto space-y-4 mb-12">
-          <form onSubmit={handleSearch} className="flex gap-2">
-            <div className="relative flex-1">
-              <Search className="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
+          {/* Search Box */}
+          <form onSubmit={handleSearch} className="bg-[#ebddc5] border border-[#201e1d]/10 rounded-2xl p-6 flex flex-col sm:flex-row gap-4 items-center">
+            <div className="relative flex-1 w-full">
               <input
                 type="text"
-                value={batchIdInput}
-                onChange={(e) => setBatchIdInput(e.target.value)}
-                placeholder="e.g. TFH-2026-B001"
-                className="w-full pl-12 pr-4 py-3.5 bg-white border border-slate-300 rounded-xl font-mono text-sm uppercase text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-sm"
+                value={batchId}
+                onChange={(e) => setBatchId(e.target.value)}
+                placeholder="Enter Batch ID (e.g. TFH-2026-B001)"
+                className="input pl-10"
               />
+              <Search className="w-4 h-4 text-[#201e1d]/50 absolute left-3.5 top-1/2 -translate-y-1/2" />
             </div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary"
-            >
-              {loading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <span>Verify Batch</span>}
+
+            <button type="submit" disabled={loading} className="btn btn-primary w-full sm:w-auto px-6 py-2.5">
+              {loading ? 'Searching...' : 'Verify Batch QA'}
             </button>
           </form>
 
-          {/* Quick Pre-fill buttons */}
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 justify-center">
+          {/* Preset Buttons */}
+          <div className="flex flex-wrap items-center gap-2 text-xs text-[#201e1d]/60 font-mono">
             <span>Try sample batches:</span>
             <button
-              type="button"
-              onClick={() => { setBatchIdInput('TFH-2026-B001'); fetchBatch('TFH-2026-B001'); }}
-              className="px-2.5 py-1 rounded bg-slate-200 text-slate-800 hover:bg-emerald-100 hover:text-emerald-900 transition-colors font-semibold"
+              onClick={() => { setBatchId('TFH-2026-B001'); fetchBatch('TFH-2026-B001'); }}
+              className="px-3 py-1 rounded-full bg-[#ebddc5] border border-[#201e1d]/15 text-[#201e1d] hover:border-[#c67139]"
             >
               TFH-2026-B001 (TriFiber)
             </button>
             <button
-              type="button"
-              onClick={() => { setBatchIdInput('TFH-2026-B002'); fetchBatch('TFH-2026-B002'); }}
-              className="px-2.5 py-1 rounded bg-slate-200 text-slate-800 hover:bg-emerald-100 hover:text-emerald-900 transition-colors font-semibold"
+              onClick={() => { setBatchId('TFH-2026-B002'); fetchBatch('TFH-2026-B002'); }}
+              className="px-3 py-1 rounded-full bg-[#ebddc5] border border-[#201e1d]/15 text-[#201e1d] hover:border-[#7a8a5e]"
             >
               TFH-2026-B002 (Berberine)
             </button>
           </div>
-        </div>
 
-        {/* Results Container */}
-        <div className="max-w-4xl mx-auto">
-          {error && (
-            <div className="p-6 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 flex items-center gap-3">
-              <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
-              <div>
-                <p className="font-bold text-sm">Batch Lookup Error</p>
-                <p className="text-xs text-rose-700">{error}. Please check the batch code on your sachet or jar.</p>
-              </div>
-            </div>
-          )}
-
+          {/* Batch Certificate Display */}
           {batchData && (
-            <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-lg space-y-8 animate-fade-in">
+            <div className="bg-[#ebddc5] border border-[#201e1d]/10 rounded-3xl p-8 space-y-6">
               
-              {/* Batch Metadata Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+              <div className="flex flex-wrap justify-between items-start gap-4 border-b border-[#201e1d]/10 pb-6">
                 <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-sm text-emerald-700">{batchData.batch_id}</span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-mono text-[11px] font-bold">
-                      {batchData.status}
-                    </span>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="tag tag-accent">{batchData.status || 'VERIFIED'}</span>
+                    <span className="text-xs font-mono text-[#7a8a5e] font-semibold">{batchData.lab_name}</span>
                   </div>
-                  <h3 className="font-serif font-bold text-2xl text-slate-900 mt-1">{batchData.product_name}</h3>
+                  <h3 className="font-serif text-2xl text-[#201e1d]">{batchData.product_name}</h3>
+                  <div className="text-xs font-mono text-[#201e1d]/60 mt-1">Batch ID: {batchData.batch_id}</div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-2xl border border-slate-200">
-                  <Award className="w-8 h-8 text-amber-500 shrink-0" />
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 uppercase block">Testing Laboratory</span>
-                    <span className="text-xs font-bold text-slate-900">{batchData.lab_name}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Manufacturing Info Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs">
-                <div>
-                  <span className="text-slate-500 font-mono block text-[10px] uppercase">Mfg Date</span>
-                  <span className="font-bold text-slate-900 font-mono">{batchData.manufacture_date}</span>
-                </div>
-                <div>
-                  <span className="text-slate-500 font-mono block text-[10px] uppercase">Exp Date</span>
-                  <span className="font-bold text-slate-900 font-mono">{batchData.expiry_date}</span>
-                </div>
-                <div>
-                  <span className="text-slate-500 font-mono block text-[10px] uppercase">Audit Protocol</span>
-                  <span className="font-bold text-slate-900">ISO/IEC 17025</span>
-                </div>
-                <div>
-                  <span className="text-slate-500 font-mono block text-[10px] uppercase">Release Approval</span>
-                  <span className="font-bold text-emerald-700">PASS / CLEAN</span>
-                </div>
-              </div>
-
-              {/* Analytical Test Table */}
-              <div className="space-y-4">
-                <h4 className="font-serif text-lg font-bold text-slate-900">Analytical Assay & Heavy Metal Screen</h4>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs border-collapse">
-                    <thead>
-                      <tr className="border-b border-slate-200 text-slate-500 font-mono">
-                        <th className="py-3 px-4 uppercase font-semibold">Test Parameter</th>
-                        <th className="py-3 px-4 uppercase font-semibold">Verified Assay Result</th>
-                        <th className="py-3 px-4 uppercase font-semibold text-right">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100">
-                      {batchData.tests?.map((test, index) => (
-                        <tr key={index} className="hover:bg-slate-50">
-                          <td className="py-3 px-4 font-semibold text-slate-900">{test.parameter}</td>
-                          <td className="py-3 px-4 font-mono text-slate-700">{test.result}</td>
-                          <td className="py-3 px-4 text-right">
-                            <span className="inline-flex items-center gap-1 font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                              <CheckCircle className="w-3 h-3 text-emerald-600" />
-                              {test.status}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* COA Download Footer */}
-              <div className="pt-4 flex items-center justify-between border-t border-slate-200">
-                <span className="text-xs text-slate-500 font-mono">Digital Signature Certified by QA Lead</span>
                 <a
-                  href={batchData.coa_url}
+                  href={batchData.coa_url || '#'}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-emerald-700 hover:text-emerald-800 font-mono underline"
+                  className="btn btn-secondary text-xs"
                 >
-                  <FileText className="w-4 h-4" />
-                  <span>Download Signed Lab COA (PDF)</span>
+                  <FileText className="w-3.5 h-3.5 text-[#c67139]" />
+                  <span>Download Lab CoA (PDF)</span>
                 </a>
               </div>
 
+              {/* Lab Test Parameters Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr className="border-b border-[#201e1d]/15 text-xs font-mono uppercase text-[#201e1d]/60">
+                      <th className="py-2.5 px-3">Testing Parameter</th>
+                      <th className="py-2.5 px-3">Analytical Result</th>
+                      <th className="py-2.5 px-3">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(batchData.tests || []).map((t, idx) => (
+                      <tr key={idx} className="border-b border-[#201e1d]/10 hover:bg-[#f5ead8]/50 transition-colors">
+                        <td className="py-3 px-3 font-medium text-[#201e1d]">{t.parameter}</td>
+                        <td className="py-3 px-3 font-mono text-xs text-[#201e1d]/80">{t.result}</td>
+                        <td className="py-3 px-3">
+                          <span className="inline-flex items-center gap-1 text-xs font-bold text-[#7a8a5e]">
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            <span>{t.status}</span>
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
             </div>
           )}
-        </div>
 
+        </div>
       </div>
     </section>
   );
