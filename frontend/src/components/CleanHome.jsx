@@ -1,5 +1,9 @@
 import React from 'react';
-import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2, Star } from 'lucide-react';
+import { ArrowRight, Sparkles, ShieldCheck, CheckCircle2, Star, Brain, Activity, Clock, Zap, Microscope } from 'lucide-react';
+import FormulaExplodedView from './FormulaExplodedView';
+import GlucoseCurveSimulator from './GlucoseCurveSimulator';
+import GutBrainSynapseMap from './GutBrainSynapseMap';
+import MilestoneTimeline from './MilestoneTimeline';
 
 export default function CleanHome({ currency, addToCart, setActiveTab }) {
   const currencySymbols = { INR: '₹', USD: '$', AED: 'AED ' };
@@ -15,11 +19,11 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e1eecc] text-[#3d472b] text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5 text-[#7a8a5e]" />
-              <span>Gut + Metabolic Health</span>
+              <span>Gut + Neuro-Metabolic Health</span>
             </div>
 
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] tracking-tight text-[#201e1d]">
-              Everyday nutrition for gut + metabolic health.
+              Everyday nutrition for gut, glucose + metabolic health.
             </h1>
 
             <p className="text-[#201e1d]/75 text-lg sm:text-xl leading-relaxed max-w-xl font-sans">
@@ -29,7 +33,7 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
             <div className="flex flex-wrap gap-4 pt-2">
               <button
                 onClick={() => setActiveTab('trifiber-daily')}
-                className="btn btn-primary text-base px-7 py-3.5"
+                className="btn btn-primary text-base px-7 py-3.5 flex items-center gap-2"
               >
                 <span>Shop TriFiber Daily</span>
                 <ArrowRight className="w-4 h-4" />
@@ -39,7 +43,7 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
                 onClick={() => setActiveTab('quiz')}
                 className="btn btn-secondary text-base px-6 py-3.5"
               >
-                Take 1-Min Quiz
+                Take 1-Min Metabolic Quiz
               </button>
             </div>
 
@@ -104,7 +108,7 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
         </div>
       </section>
 
-      {/* 2. PRODUCT RANGE SHOWCASE (2 CARDS ONLY) */}
+      {/* 2. PRODUCT RANGE SHOWCASE (2 CARDS) */}
       <section className="container-max text-left space-y-12">
         
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -260,7 +264,19 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
         </div>
       </section>
 
-      {/* 3. SCIENCE TEASER STRIP */}
+      {/* 3. INTERACTIVE GLUCOSE CURVE SIMULATOR */}
+      <GlucoseCurveSimulator setActiveTab={setActiveTab} />
+
+      {/* 4. INTERACTIVE 3D FORMULA EXPLODED VIEW */}
+      <FormulaExplodedView setActiveTab={setActiveTab} />
+
+      {/* 5. GUT-BRAIN AXIS & NEURO-MICROBIOME MAP */}
+      <GutBrainSynapseMap setActiveTab={setActiveTab} />
+
+      {/* 6. 90-DAY PHYSIOLOGICAL MILESTONE TIMELINE */}
+      <MilestoneTimeline setActiveTab={setActiveTab} />
+
+      {/* 7. SCIENCE TEASER & BATCH CTA */}
       <section className="container-max text-left">
         <div className="bg-[#ebddc5] border border-[#201e1d]/10 rounded-[32px] p-8 lg:p-12 space-y-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#201e1d]/10 pb-6">
@@ -268,12 +284,20 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
               <span className="tag tag-accent mb-2">Evidence-Led Rationale</span>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#201e1d]">Why Fiber & Botanical Science Matter</h3>
             </div>
-            <button
-              onClick={() => setActiveTab('why-fiber')}
-              className="btn btn-secondary text-xs py-2 px-4"
-            >
-              Read Full Science Specs &rarr;
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setActiveTab('batch')}
+                className="btn btn-ghost text-xs py-2 px-4"
+              >
+                Scan Batch CoA &rarr;
+              </button>
+              <button
+                onClick={() => setActiveTab('why-fiber')}
+                className="btn btn-secondary text-xs py-2 px-4"
+              >
+                Read Full Science Dossier &rarr;
+              </button>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 text-sm">

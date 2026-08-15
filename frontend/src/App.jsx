@@ -11,8 +11,9 @@ import ClaimsChecker from './components/ClaimsChecker';
 import MarketingSuite from './components/MarketingSuite';
 import CartDrawer from './components/CartDrawer';
 import OwnerAuthModal from './components/OwnerAuthModal';
+import MobileDock from './components/MobileDock';
 import Footer from './components/Footer';
-import { CheckCircle2, Lock } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 export default function App() {
   const [currency, setCurrency] = useState('INR');
@@ -60,12 +61,13 @@ export default function App() {
       return;
     }
     setActiveTab(tab);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#f5ead8] text-[#201e1d] flex flex-col font-sans selection:bg-[#c67139]/20 selection:text-[#c67139]">
+    <div className="min-h-screen bg-[#f5ead8] text-[#201e1d] flex flex-col font-sans selection:bg-[#c67139]/20 selection:text-[#c67139] relative">
 
       {/* Toast Notification */}
       {toastMessage && (
@@ -81,7 +83,7 @@ export default function App() {
         </div>
       )}
 
-      {/* Global Navigation (No visible Owner Login button in Production) */}
+      {/* Global Navigation */}
       <Navbar
         currency={currency}
         setCurrency={setCurrency}
@@ -93,8 +95,8 @@ export default function App() {
         onOpenOwnerModal={() => setIsOwnerModalOpen(true)}
       />
 
-      {/* Main Content Area */}
-      <main className="flex-1">
+      {/* Main Content Area (With Mobile Bottom Safe Padding) */}
+      <main className="flex-1 pb-20 lg:pb-0">
         {activeTab === 'home' && (
           <CleanHome
             currency={currency}
@@ -131,7 +133,7 @@ export default function App() {
 
         {activeTab === 'quiz' && (
           <div className="pt-6">
-            <MetabolicQuiz setActiveTab={handleTabChange} />
+            <MetabolicQuiz setActiveTab={handleTabChange} addToCart={addToCart} />
           </div>
         )}
 
@@ -156,6 +158,14 @@ export default function App() {
           </div>
         )}
       </main>
+
+      {/* Mobile Glassmorphic Bottom Dock (iOS & Android App Navigation) */}
+      <MobileDock
+        activeTab={activeTab}
+        setActiveTab={handleTabChange}
+        cartCount={cartCount}
+        setIsCartOpen={setIsCartOpen}
+      />
 
       {/* Cart Drawer */}
       <CartDrawer

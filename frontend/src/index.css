@@ -27,13 +27,6 @@
   --font-body: "Figtree", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  --space-1: 4.4px;
-  --space-2: 8.8px;
-  --space-3: 13.2px;
-  --space-4: 17.6px;
-  --space-6: 26.4px;
-  --space-8: 35.2px;
-
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 28px;
@@ -45,11 +38,13 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -59,6 +54,8 @@ body {
   font-family: var(--font-body);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior-y: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -69,6 +66,30 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
 }
 
+/* Safe Area Insets for iOS Notch & Android Gesture Bars */
+.pt-safe {
+  padding-top: max(16px, env(safe-area-inset-top));
+}
+
+.pb-safe {
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+}
+
+.pb-safe-dock {
+  padding-bottom: max(80px, calc(65px + env(safe-area-inset-bottom)));
+}
+
+/* Hide scrollbar for smooth mobile horizontal scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
 .washed {
   filter: saturate(0.65) contrast(0.88) brightness(1.08) opacity(0.95);
 }
@@ -77,7 +98,13 @@ h1, h2, h3, h4, h5, h6 {
 .container-max {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
+}
+
+@media (min-width: 640px) {
+  .container-max {
+    padding: 0 24px;
+  }
 }
 
 /* Organic Buttons */
@@ -95,14 +122,20 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text);
   background: transparent;
   border: 1px solid transparent;
-  padding: 10px 20px;
+  padding: 12px 22px;
   border-radius: 999px;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
+}
+
+.btn:active {
+  transform: scale(0.96);
 }
 
 .btn-primary {
   background: var(--color-accent);
   color: var(--color-bg);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-accent) 30%, transparent);
 }
 
 .btn-primary:hover {
@@ -113,6 +146,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary:active {
   background: var(--color-accent-700);
+  transform: scale(0.96);
 }
 
 .btn-secondary {
@@ -165,8 +199,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Inputs & Form Controls */
 .input {
   width: 100%;
-  min-height: 38px;
-  padding: 8px 16px;
+  min-height: 42px;
+  padding: 10px 18px;
   font-family: var(--font-body);
   font-size: 14px;
   color: var(--color-text);
@@ -175,6 +209,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--color-divider);
   border-radius: 999px;
   transition: border-color 0.2s ease;
+  touch-action: manipulation;
 }
 
 .input:focus {
@@ -191,10 +226,16 @@ textarea.input {
 .card-organic {
   background: var(--color-surface);
   border-radius: 28px;
-  padding: 32px;
+  padding: 24px;
   border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .card-organic {
+    padding: 32px;
+  }
 }
 
 .card-organic:hover {
@@ -205,23 +246,40 @@ textarea.input {
 .card-organic-accent {
   background: var(--color-accent-2-100);
   border-radius: 28px;
-  padding: 32px;
+  padding: 24px;
   border: 1px solid color-mix(in srgb, var(--color-accent-2) 20%, transparent);
 }
 
-/* Toast alert */
+@media (min-width: 640px) {
+  .card-organic-accent {
+    padding: 32px;
+  }
+}
+
+/* Toast alert positioned above mobile dock */
 .toast-notification {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: calc(85px + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
   background: var(--color-neutral-800);
   color: var(--color-bg);
-  padding: 14px 22px;
+  padding: 12px 20px;
   border-radius: 999px;
   box-shadow: var(--shadow-lg);
   border-left: 4px solid var(--color-accent);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  width: min(90%, 420px);
+}
+
+@media (min-width: 768px) {
+  .toast-notification {
+    bottom: 24px;
+    left: auto;
+    right: 24px;
+    transform: none;
+  }
 }
