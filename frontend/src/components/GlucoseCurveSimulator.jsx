@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Activity, Zap, TrendingDown, ArrowRight, Clock, Sparkles, CheckCircle2, AlertTriangle, ShieldCheck } from 'lucide-react';
 
 export default function GlucoseCurveSimulator({ setActiveTab }) {
-  const [mealType, setMealType] = useState('lunch'); // 'breakfast', 'lunch', 'dinner', 'snack'
+  const [mealType, setMealType] = useState('lunch'); // 'breakfast', 'lunch', 'dinner'
   const [withTriFiber, setWithTriFiber] = useState(true);
-  const [hoveredTime, setHoveredTime] = useState(null);
 
   const mealPresets = {
     breakfast: {
@@ -47,43 +46,38 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
 
   const activePreset = mealPresets[mealType];
 
-  // Generate SVG curve points
-  // X: 0 -> 400 (represents 0 to 180 min)
-  // Y: 200 (baseline 80 mg/dL) to 20 (high 190 mg/dL)
-  // Standard curve: steep spike at x=100 (45m), drops below baseline at x=260 (120m), slow recovery
-  // TriFiber curve: gentle curve peaking at x=140 (60m) at lower amplitude, sustained plateau
   const noFiberPath = "M 20,160 Q 90,30 140,50 T 260,175 Q 320,165 380,155";
   const triFiberPath = "M 20,160 Q 110,105 180,100 T 290,118 Q 340,135 380,150";
 
   return (
-    <section className="py-12 lg:py-16 bg-[#f5ead8]">
-      <div className="container-max space-y-10 text-left">
+    <div className="py-8 lg:py-12 bg-white text-left">
+      <div className="container-max space-y-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fff2eb] text-[#8c491a] text-xs font-semibold">
-              <Activity className="w-3.5 h-3.5 text-[#c67139]" />
-              <span>Real-Time Metabolic Response Simulator</span>
+          <div className="space-y-2 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-orange-800 text-xs font-semibold border border-orange-200">
+              <Activity className="w-3.5 h-3.5 text-orange-600" />
+              <span>Continuous Glucose Simulation (CGM)</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#201e1d] leading-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">
               Watch How TriFiber Flattens the Post-Meal Glucose Curve
             </h2>
-            <p className="text-sm sm:text-base text-[#201e1d]/75 font-sans">
+            <p className="text-sm sm:text-base text-slate-600 font-sans">
               Experience the physiological difference between erratic glycemic spikes that trigger insulin resistance vs. a sustained, fiber-buffered metabolic plateau.
             </p>
           </div>
 
           {/* Meal Type Preset Tabs */}
-          <div className="flex flex-wrap gap-2 bg-[#ebddc5] p-1.5 rounded-2xl border border-[#201e1d]/10 self-start md:self-auto shrink-0 shadow-sm">
+          <div className="flex flex-wrap gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 self-start md:self-auto shrink-0 shadow-sm">
             {Object.keys(mealPresets).map(key => (
               <button
                 key={key}
                 onClick={() => setMealType(key)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold capitalize transition-all ${
                   mealType === key
-                    ? 'bg-[#201e1d] text-[#f5ead8] shadow-sm'
-                    : 'text-[#201e1d]/70 hover:text-[#201e1d]'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {key}
@@ -96,25 +90,25 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
         <div className="grid lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left Column: Interactive Graph Display */}
-          <div className="lg:col-span-7 bg-[#ebddc5] border border-[#201e1d]/15 rounded-[32px] p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-sm">
+          <div className="lg:col-span-7 bg-slate-50 border border-slate-200 rounded-[28px] p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-sm">
             
             {/* Graph Header & Protocol Switch */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#201e1d]/60">
-                  Continuous Glucose Simulation (CGM)
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
+                  Continuous Glucose Simulation
                 </span>
-                <div className="font-serif text-xl text-[#201e1d]">{activePreset.name}</div>
+                <div className="font-heading text-xl font-bold text-slate-900">{activePreset.name}</div>
               </div>
 
               {/* Protocol Toggle Buttons */}
-              <div className="flex items-center gap-2 bg-[#f5ead8] p-1 rounded-xl border border-[#201e1d]/15 text-xs">
+              <div className="flex items-center gap-2 bg-white p-1 rounded-xl border border-slate-200 text-xs shadow-sm">
                 <button
                   onClick={() => setWithTriFiber(false)}
                   className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
                     !withTriFiber
-                      ? 'bg-[#b84a39] text-white shadow-sm'
-                      : 'text-[#201e1d]/60 hover:text-[#201e1d]'
+                      ? 'bg-rose-600 text-white shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   Without Fiber
@@ -123,8 +117,8 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
                   onClick={() => setWithTriFiber(true)}
                   className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
                     withTriFiber
-                      ? 'bg-[#7a8a5e] text-white shadow-sm'
-                      : 'text-[#201e1d]/60 hover:text-[#201e1d]'
+                      ? 'bg-emerald-700 text-white shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   + TriFiber Protocol
@@ -133,10 +127,10 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
             </div>
 
             {/* SVG Interactive Chart */}
-            <div className="relative bg-[#f5ead8] border border-[#201e1d]/10 rounded-2xl p-4 sm:p-6 overflow-hidden">
+            <div className="relative bg-white border border-slate-200 rounded-2xl p-4 sm:p-6 overflow-hidden shadow-sm">
               
               {/* Y-Axis Labels */}
-              <div className="absolute left-3 top-4 bottom-8 flex flex-col justify-between text-[10px] font-mono text-[#201e1d]/50 pointer-events-none select-none">
+              <div className="absolute left-3 top-4 bottom-8 flex flex-col justify-between text-[10px] font-mono text-slate-400 pointer-events-none select-none">
                 <span>190 mg/dL</span>
                 <span>140 mg/dL</span>
                 <span>90 mg/dL</span>
@@ -147,13 +141,13 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
                 <svg viewBox="0 0 400 200" className="w-full h-48 sm:h-56 overflow-visible">
                   
                   {/* Grid Lines */}
-                  <line x1="0" y1="40" x2="400" y2="40" stroke="#201e1d" strokeOpacity="0.08" strokeDasharray="3 3" />
-                  <line x1="0" y1="100" x2="400" y2="100" stroke="#201e1d" strokeOpacity="0.08" strokeDasharray="3 3" />
-                  <line x1="0" y1="160" x2="400" y2="160" stroke="#201e1d" strokeOpacity="0.15" />
+                  <line x1="0" y1="40" x2="400" y2="40" stroke="#94a3b8" strokeOpacity="0.2" strokeDasharray="3 3" />
+                  <line x1="0" y1="100" x2="400" y2="100" stroke="#94a3b8" strokeOpacity="0.2" strokeDasharray="3 3" />
+                  <line x1="0" y1="160" x2="400" y2="160" stroke="#94a3b8" strokeOpacity="0.3" />
 
                   {/* Target Optimal Zone (90 - 130 mg/dL) */}
-                  <rect x="0" y="80" width="400" height="80" fill="#7a8a5e" fillOpacity="0.08" rx="4" />
-                  <text x="390" y="95" textAnchor="end" className="text-[9px] font-mono fill-[#7a8a5e] font-bold">
+                  <rect x="0" y="80" width="400" height="80" fill="#10b981" fillOpacity="0.08" rx="4" />
+                  <text x="390" y="95" textAnchor="end" className="text-[9px] font-mono fill-emerald-700 font-bold">
                     Optimal Satiety Zone
                   </text>
 
@@ -161,7 +155,7 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
                   <path
                     d={noFiberPath}
                     fill="none"
-                    stroke="#b84a39"
+                    stroke="#e11d48"
                     strokeWidth={!withTriFiber ? "3.5" : "1.5"}
                     strokeOpacity={!withTriFiber ? "1" : "0.35"}
                     strokeDasharray={withTriFiber ? "4 4" : "none"}
@@ -172,7 +166,7 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
                   <path
                     d={triFiberPath}
                     fill="none"
-                    stroke="#7a8a5e"
+                    stroke="#059669"
                     strokeWidth={withTriFiber ? "4" : "1.5"}
                     strokeOpacity={withTriFiber ? "1" : "0.35"}
                     className="transition-all duration-500"
@@ -181,12 +175,12 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
                   {/* Annotations */}
                   {!withTriFiber && (
                     <g className="animate-pulse">
-                      <circle cx="115" cy="42" r="5" fill="#b84a39" />
-                      <text x="125" y="40" className="text-[10px] font-mono font-bold fill-[#b84a39]">
+                      <circle cx="115" cy="42" r="5" fill="#e11d48" />
+                      <text x="125" y="40" className="text-[10px] font-mono font-bold fill-rose-600">
                         Spike: {activePreset.noFiberPeak} mg/dL
                       </text>
-                      <circle cx="260" cy="175" r="5" fill="#b84a39" />
-                      <text x="265" y="190" className="text-[10px] font-mono font-bold fill-[#b84a39]">
+                      <circle cx="260" cy="175" r="5" fill="#e11d48" />
+                      <text x="265" y="190" className="text-[10px] font-mono font-bold fill-rose-600">
                         Crash: {activePreset.noFiberCrash} mg/dL
                       </text>
                     </g>
@@ -194,8 +188,8 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
 
                   {withTriFiber && (
                     <g>
-                      <circle cx="170" cy="100" r="5" fill="#7a8a5e" />
-                      <text x="180" y="94" className="text-[10px] font-mono font-bold fill-[#7a8a5e]">
+                      <circle cx="170" cy="100" r="5" fill="#059669" />
+                      <text x="180" y="94" className="text-[10px] font-mono font-bold fill-emerald-700">
                         Steady Peak: {activePreset.triFiberPeak} mg/dL
                       </text>
                     </g>
@@ -203,7 +197,7 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
                 </svg>
 
                 {/* X-Axis Time Markers */}
-                <div className="flex justify-between text-[10px] font-mono text-[#201e1d]/60 pt-2 border-t border-[#201e1d]/10">
+                <div className="flex justify-between text-[10px] font-mono text-slate-500 pt-2 border-t border-slate-200">
                   <span>0 min (Meal)</span>
                   <span>45 min</span>
                   <span>90 min</span>
@@ -218,15 +212,15 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
             <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-1 bg-[#b84a39] rounded-full inline-block"></span>
-                  <span className="text-[#201e1d]/80">No Fiber (Erratic Spike)</span>
+                  <span className="w-3 h-1 bg-rose-600 rounded-full inline-block"></span>
+                  <span className="text-slate-600">No Fiber (Erratic Spike)</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-1 bg-[#7a8a5e] rounded-full inline-block"></span>
-                  <span className="text-[#201e1d] font-bold">+ TriFiber (Controlled Plateau)</span>
+                  <span className="w-3 h-1 bg-emerald-700 rounded-full inline-block"></span>
+                  <span className="text-slate-900 font-bold">+ TriFiber (Controlled Plateau)</span>
                 </div>
               </div>
-              <span className="text-[11px] text-[#201e1d]/60 font-sans">
+              <span className="text-[11px] text-slate-500 font-sans">
                 Based on continuous glycemic load studies
               </span>
             </div>
@@ -234,14 +228,14 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
           </div>
 
           {/* Right Column: Key Physiological Metrics */}
-          <div className="lg:col-span-5 bg-[#f5ead8] border border-[#201e1d]/15 rounded-[32px] p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-sm">
+          <div className="lg:col-span-5 bg-white border border-slate-200 rounded-[28px] p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-sm">
             
             <div className="space-y-5">
               <div className="space-y-1">
                 <span className="tag tag-accent text-[11px] font-mono font-bold">
                   Metabolic Comparison Metrics
                 </span>
-                <h3 className="font-serif text-2xl text-[#201e1d]">
+                <h3 className="font-heading text-2xl font-bold text-slate-900">
                   {withTriFiber ? 'TriFiber Buffered State' : 'Unbuffered Starch State'}
                 </h3>
               </div>
@@ -250,42 +244,42 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
               <div className="space-y-3">
                 
                 {/* Metric 1: Peak Glycemia */}
-                <div className="bg-[#ebddc5] rounded-2xl p-4 border border-[#201e1d]/10 flex items-center justify-between">
+                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-between">
                   <div>
-                    <div className="text-xs font-mono text-[#201e1d]/60">Peak Post-Meal Glucose</div>
-                    <div className="font-serif text-2xl text-[#201e1d] mt-0.5">
+                    <div className="text-xs font-mono text-slate-500">Peak Post-Meal Glucose</div>
+                    <div className="font-heading text-2xl font-bold text-slate-900 mt-0.5">
                       {withTriFiber ? `${activePreset.triFiberPeak} mg/dL` : `${activePreset.noFiberPeak} mg/dL`}
                     </div>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-xs font-bold font-mono ${
-                    withTriFiber ? 'bg-[#e1eecc] text-[#3d472b]' : 'bg-[#fff2eb] text-[#8c491a]'
+                    withTriFiber ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-rose-50 text-rose-800 border border-rose-200'
                   }`}>
                     {withTriFiber ? 'Balanced' : '+58 mg/dL Spike'}
                   </div>
                 </div>
 
                 {/* Metric 2: Full Satiety Window */}
-                <div className="bg-[#ebddc5] rounded-2xl p-4 border border-[#201e1d]/10 flex items-center justify-between">
+                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-between">
                   <div>
-                    <div className="text-xs font-mono text-[#201e1d]/60">Satiety & Fullness Duration</div>
-                    <div className="font-serif text-2xl text-[#201e1d] mt-0.5">
+                    <div className="text-xs font-mono text-slate-500">Satiety & Fullness Duration</div>
+                    <div className="font-heading text-2xl font-bold text-slate-900 mt-0.5">
                       {withTriFiber ? activePreset.satietyYes : activePreset.satietyNo}
                     </div>
                   </div>
-                  <div className="text-xs font-mono text-[#7a8a5e] font-bold">
+                  <div className="text-xs font-mono text-emerald-700 font-bold">
                     {withTriFiber ? 'Extended Motility' : 'Rapid Emptying'}
                   </div>
                 </div>
 
                 {/* Metric 3: Endogenous GLP-1 Elevation */}
-                <div className="bg-[#ebddc5] rounded-2xl p-4 border border-[#201e1d]/10 flex items-center justify-between">
+                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-between">
                   <div>
-                    <div className="text-xs font-mono text-[#201e1d]/60">Endogenous GLP-1 & PYY Signal</div>
-                    <div className="font-serif text-2xl text-[#7a8a5e] mt-0.5">
+                    <div className="text-xs font-mono text-slate-500">Endogenous GLP-1 & PYY Signal</div>
+                    <div className="font-heading text-2xl font-bold text-emerald-700 mt-0.5">
                       {withTriFiber ? activePreset.glp1Delta : 'Baseline (0%)'}
                     </div>
                   </div>
-                  <div className="text-xs font-mono text-[#201e1d]/70">
+                  <div className="text-xs font-mono text-slate-600">
                     L-Cell Triggered
                   </div>
                 </div>
@@ -293,13 +287,13 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
                 {/* Metric 4: Afternoon Brain Fog / Crash Risk */}
                 <div className={`rounded-2xl p-4 border flex items-center gap-3 ${
                   withTriFiber
-                    ? 'bg-[#e1eecc] border-[#7a8a5e]/30 text-[#3d472b]'
-                    : 'bg-[#fff2eb] border-[#c67139]/30 text-[#8c491a]'
+                    ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                    : 'bg-rose-50 border-rose-200 text-rose-800'
                 }`}>
                   {withTriFiber ? (
-                    <CheckCircle2 className="w-5 h-5 text-[#7a8a5e] shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                   ) : (
-                    <AlertTriangle className="w-5 h-5 text-[#c67139] shrink-0" />
+                    <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0" />
                   )}
                   <div className="text-xs font-sans">
                     <span className="font-bold">Post-Meal Outcome: </span>
@@ -326,6 +320,6 @@ export default function GlucoseCurveSimulator({ setActiveTab }) {
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }

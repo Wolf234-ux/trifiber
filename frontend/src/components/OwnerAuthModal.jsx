@@ -9,7 +9,6 @@ export default function OwnerAuthModal({ isOpen, onClose, onSuccess }) {
 
   const handleVerify = (e) => {
     e.preventDefault();
-    // Default Owner Security PIN: 2026
     if (pin.trim() === '2026') {
       setError('');
       setPin('');
@@ -21,24 +20,24 @@ export default function OwnerAuthModal({ isOpen, onClose, onSuccess }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#201e1d]/80 backdrop-blur-sm animate-fade-in">
-      <div className="bg-[#f5ead8] border-2 border-[#c67139] rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-6">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-in fade-in">
+      <div className="bg-white border border-slate-200 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative space-y-6 text-left">
         
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-[#201e1d]/50 hover:text-[#201e1d] transition-colors"
+          className="absolute top-4 right-4 p-1.5 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-12 h-12 bg-[#c67139]/10 text-[#c67139] rounded-full flex items-center justify-center mx-auto">
+          <div className="w-12 h-12 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center mx-auto border border-orange-200">
             <Lock className="w-6 h-6" />
           </div>
-          <h3 className="font-serif text-xl font-bold text-[#201e1d]">Website Owner Authentication</h3>
-          <p className="text-xs text-[#201e1d]/70 max-w-xs mx-auto">
+          <h3 className="font-heading text-xl font-bold text-slate-900">Website Owner Authentication</h3>
+          <p className="text-xs text-slate-500 max-w-xs mx-auto font-sans">
             The AI Marketing Suite & Lead Analytics are strictly restricted to the website founder and owner.
           </p>
         </div>
@@ -46,7 +45,7 @@ export default function OwnerAuthModal({ isOpen, onClose, onSuccess }) {
         {/* Form */}
         <form onSubmit={handleVerify} className="space-y-4">
           <div>
-            <label className="block text-xs font-mono font-semibold uppercase text-[#201e1d]/70 mb-1 text-left">
+            <label className="block text-xs font-mono font-semibold uppercase text-slate-600 mb-1">
               Enter Owner Security PIN
             </label>
             <input
@@ -54,17 +53,17 @@ export default function OwnerAuthModal({ isOpen, onClose, onSuccess }) {
               value={pin}
               onChange={(e) => { setPin(e.target.value); setError(''); }}
               placeholder="Enter PIN (Default: 2026)"
-              className="input text-center text-lg tracking-widest font-mono font-bold"
+              className="input text-center text-lg tracking-widest font-mono font-bold bg-slate-50 border-slate-200"
               autoFocus
             />
-            <p className="text-[10px] text-[#201e1d]/50 mt-1 font-mono text-center">
-              (Owner Master Access Key: <span className="font-bold text-[#c67139]">2026</span>)
+            <p className="text-[10px] text-slate-400 mt-1 font-mono text-center">
+              (Owner Master Access Key: <span className="font-bold text-orange-600">2026</span>)
             </p>
           </div>
 
           {error && (
-            <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg flex items-center gap-2 text-xs text-red-700">
-              <ShieldAlert className="w-4 h-4 shrink-0 text-red-600" />
+            <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl flex items-center gap-2 text-xs text-rose-800">
+              <ShieldAlert className="w-4 h-4 shrink-0 text-rose-600" />
               <span>{error}</span>
             </div>
           )}
@@ -78,7 +77,7 @@ export default function OwnerAuthModal({ isOpen, onClose, onSuccess }) {
           </button>
         </form>
 
-        <div className="text-[11px] text-[#201e1d]/60 text-center border-t border-[#201e1d]/10 pt-3">
+        <div className="text-[11px] text-slate-400 text-center border-t border-slate-100 pt-3 font-mono">
           🔒 Secure Owner Gateway • TriFiber Health Administrative Portal
         </div>
 

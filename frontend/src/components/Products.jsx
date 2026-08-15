@@ -21,16 +21,16 @@ export default function Products({ currency, addToCart, setActiveTab }) {
   };
 
   return (
-    <section id="products" className="py-16 bg-[#f5ead8]">
+    <section id="products" className="py-16 bg-white">
       <div className="container-max">
         
         {/* Section Header */}
         <div className="text-left max-w-2xl mb-12 space-y-3">
           <span className="tag tag-accent-2">The Range</span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#201e1d]">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-slate-900">
             Two products. One everyday metabolic-health platform.
           </h2>
-          <p className="text-[#201e1d]/70 text-base">
+          <p className="text-slate-600 text-base font-sans">
             TriFiber builds the daily habit. Berberine deepens it. Take one, or run both together.
           </p>
         </div>
@@ -39,44 +39,44 @@ export default function Products({ currency, addToCart, setActiveTab }) {
         <div className="grid md:grid-cols-2 gap-8">
           
           {/* Product 1: TriFiber Daily */}
-          <div className="bg-[#ebddc5] border border-[#201e1d]/10 rounded-[32px] p-8 flex flex-col justify-between hover:shadow-md transition-all">
+          <div className="bg-white border border-slate-200 rounded-[32px] p-8 flex flex-col justify-between hover:shadow-lg transition-all">
             <div className="space-y-6">
               
               <div className="flex items-start justify-between">
-                <span className="tag tag-accent">Daily Multi-Fiber Drink</span>
-                <span className="text-xs font-mono font-semibold text-[#c67139]">Lemon-Jeera</span>
+                <span className="tag tag-accent font-semibold">Daily Multi-Fiber Drink</span>
+                <span className="text-xs font-mono font-semibold text-orange-600">Lemon-Jeera</span>
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-serif text-3xl text-[#201e1d]">TriFiber Daily</h3>
-                <p className="text-sm text-[#201e1d]/75 leading-relaxed">
+                <h3 className="font-heading text-3xl font-bold text-slate-900">TriFiber Daily</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-sans">
                   Soluble, insoluble, and prebiotic fiber in one scoop. Built to close the fiber gap without bloat or medicinal psyllium sludge.
                 </p>
               </div>
 
-              <div className="bg-[#f5ead8] rounded-2xl p-4 border border-[#201e1d]/10 space-y-2 text-xs text-[#201e1d]">
+              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-2 text-xs text-slate-800">
                 <div className="flex items-center gap-2 font-medium">
-                  <Check className="w-4 h-4 text-[#c67139]" />
+                  <Check className="w-4 h-4 text-orange-600" />
                   <span>3.0g Standardized Oat Beta-Glucan</span>
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <Check className="w-4 h-4 text-[#c67139]" />
+                  <Check className="w-4 h-4 text-orange-600" />
                   <span>4.5g Prebiotic Acacia Fiber</span>
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <Check className="w-4 h-4 text-[#c67139]" />
+                  <Check className="w-4 h-4 text-orange-600" />
                   <span>2.5g Resistant Starch Blend</span>
                 </div>
               </div>
 
             </div>
 
-            <div className="pt-8 border-t border-[#201e1d]/10 space-y-4">
+            <div className="pt-8 border-t border-slate-100 space-y-4">
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-[#201e1d]">
+                <span className="font-heading text-3xl font-bold text-slate-900">
                   {symbol}{getPrice('trifiber', true)}
                 </span>
-                <span className="text-xs text-[#201e1d]/60 font-sans">
+                <span className="text-xs text-slate-500 font-sans">
                   / month on subscription · {symbol}{prices.trifiber[currency] || prices.trifiber['INR']} one-time
                 </span>
               </div>
@@ -108,44 +108,44 @@ export default function Products({ currency, addToCart, setActiveTab }) {
           </div>
 
           {/* Product 2: Berberine Balance */}
-          <div className="bg-[#f0fae1] border border-[#7a8a5e]/20 rounded-[32px] p-8 flex flex-col justify-between hover:shadow-md transition-all">
+          <div className="bg-emerald-50/50 border border-emerald-200/80 rounded-[32px] p-8 flex flex-col justify-between hover:shadow-lg transition-all">
             <div className="space-y-6">
               
               <div className="flex items-start justify-between">
-                <span className="tag tag-accent-2">Standardized Botanical</span>
-                <span className="text-xs font-mono font-semibold text-[#7a8a5e]">97%+ Purity</span>
+                <span className="tag tag-accent-2 font-semibold">Standardized Botanical</span>
+                <span className="text-xs font-mono font-semibold text-emerald-700">97%+ Purity</span>
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-serif text-3xl text-[#201e1d]">Berberine Balance</h3>
-                <p className="text-sm text-[#201e1d]/75 leading-relaxed">
+                <h3 className="font-heading text-3xl font-bold text-slate-900">Berberine Balance</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-sans">
                   Pure standardized Berberine HCl (500mg target) enhanced with Piperine for optimal gastrointestinal bioavailability and AMPK pathway activation.
                 </p>
               </div>
 
-              <div className="bg-[#f5ead8] rounded-2xl p-4 border border-[#201e1d]/10 space-y-2 text-xs text-[#201e1d]">
+              <div className="bg-white rounded-2xl p-4 border border-emerald-200/60 space-y-2 text-xs text-slate-800 shadow-sm">
                 <div className="flex items-center gap-2 font-medium">
-                  <Check className="w-4 h-4 text-[#7a8a5e]" />
+                  <Check className="w-4 h-4 text-emerald-600" />
                   <span>500mg Pure Berberine HCl (97%+ Assay)</span>
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <Check className="w-4 h-4 text-[#7a8a5e]" />
+                  <Check className="w-4 h-4 text-emerald-600" />
                   <span>5mg Piperine Bio-Enhancer Extract</span>
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <Check className="w-4 h-4 text-[#7a8a5e]" />
+                  <Check className="w-4 h-4 text-emerald-600" />
                   <span>FSSAI Schedule IV Botanical Clearance</span>
                 </div>
               </div>
 
             </div>
 
-            <div className="pt-8 border-t border-[#7a8a5e]/20 space-y-4">
+            <div className="pt-8 border-t border-emerald-200/60 space-y-4">
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-[#201e1d]">
+                <span className="font-heading text-3xl font-bold text-slate-900">
                   {symbol}{getPrice('berberine', true)}
                 </span>
-                <span className="text-xs text-[#201e1d]/60 font-sans">
+                <span className="text-xs text-slate-500 font-sans">
                   / month on subscription · {symbol}{prices.berberine[currency] || prices.berberine['INR']} one-time
                 </span>
               </div>

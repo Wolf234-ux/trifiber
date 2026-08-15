@@ -67,16 +67,16 @@ export default function App() {
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-[#f5ead8] text-[#201e1d] flex flex-col font-sans selection:bg-[#c67139]/20 selection:text-[#c67139] relative">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-orange-500/20 selection:text-orange-600 relative">
 
       {/* Toast Notification */}
       {toastMessage && (
         <div className="toast-notification">
-          <CheckCircle2 className="w-5 h-5 text-[#7a8a5e] shrink-0" />
+          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
           <span className="text-xs font-semibold font-sans">{toastMessage}</span>
           <button
             onClick={() => setIsCartOpen(true)}
-            className="ml-2 font-mono text-xs text-[#c67139] underline font-bold"
+            className="ml-2 font-mono text-xs text-orange-400 underline font-bold"
           >
             View Cart ({cartCount})
           </button>

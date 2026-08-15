@@ -14,7 +14,6 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
   const [result, setResult] = useState(null);
 
   const calculateScoreLocally = (data) => {
-    // Metabolic resilience calculation (100 is optimal)
     const base = 100;
     const spikePenalty = (data.glucose_spikes - 1) * 10;
     const cravingPenalty = (data.cravings_score - 1) * 8;
@@ -99,33 +98,33 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
   };
 
   return (
-    <section className="py-12 lg:py-16 bg-[#f5ead8]">
+    <div className="py-12 lg:py-16 bg-white text-left">
       <div className="container-max">
-        <div className="max-w-3xl mx-auto bg-[#ebddc5] border border-[#201e1d]/15 rounded-[36px] p-6 sm:p-10 text-left space-y-8 shadow-sm">
+        <div className="max-w-3xl mx-auto bg-slate-50 border border-slate-200 rounded-[36px] p-6 sm:p-10 text-left space-y-8 shadow-sm">
           
           {/* Header */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="tag tag-accent text-xs font-mono font-bold">1-Min Interactive Tool</span>
               {!result && (
-                <span className="text-xs font-mono text-[#201e1d]/60 font-semibold">
+                <span className="text-xs font-mono text-slate-500 font-semibold">
                   Step {step} of 4
                 </span>
               )}
             </div>
-            <h1 className="font-serif text-3xl sm:text-4xl text-[#201e1d] leading-tight">
+            <h1 className="font-heading text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
               Personalized Metabolic Satiety & Fiber Gap Calculator
             </h1>
-            <p className="text-sm sm:text-base text-[#201e1d]/75 font-sans">
+            <p className="text-sm sm:text-base text-slate-600 font-sans">
               Discover your personal daily fiber deficit (in grams), glucose volatility index, and get an evidence-led daily routine.
             </p>
           </div>
 
           {/* Progress Bar */}
           {!result && (
-            <div className="w-full bg-[#f5ead8] h-2 rounded-full overflow-hidden border border-[#201e1d]/10">
+            <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
               <div
-                className="bg-[#c67139] h-full transition-all duration-300 rounded-full"
+                className="bg-orange-600 h-full transition-all duration-300 rounded-full"
                 style={{ width: `${(step / 4) * 100}%` }}
               />
             </div>
@@ -138,7 +137,7 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
               {/* Question 1 */}
               {step === 1 && (
                 <div className="space-y-4">
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#201e1d]">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900">
                     1. How often do you experience 3 PM post-meal energy slumps or brain fog?
                   </h3>
                   <div className="grid gap-2.5">
@@ -155,13 +154,13 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
                         onClick={() => setFormData({ ...formData, glucose_spikes: opt.val })}
                         className={`text-left p-4 rounded-2xl border text-sm font-sans transition-all flex items-center justify-between ${
                           formData.glucose_spikes === opt.val
-                            ? 'bg-[#f5ead8] border-[#c67139] shadow-sm ring-2 ring-[#c67139]/20 font-bold text-[#201e1d]'
-                            : 'bg-[#f5ead8]/60 border-[#201e1d]/10 hover:bg-[#f5ead8] text-[#201e1d]/80'
+                            ? 'bg-white border-orange-500 shadow-sm ring-2 ring-orange-500/20 font-bold text-slate-900'
+                            : 'bg-white border-slate-200 hover:border-slate-300 text-slate-700'
                         }`}
                       >
                         <span>{opt.label}</span>
                         {formData.glucose_spikes === opt.val && (
-                          <CheckCircle2 className="w-4 h-4 text-[#c67139] shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         )}
                       </button>
                     ))}
@@ -172,7 +171,7 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
               {/* Question 2 */}
               {step === 2 && (
                 <div className="space-y-4">
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#201e1d]">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900">
                     2. Intensity of mid-afternoon sugar or refined carb cravings:
                   </h3>
                   <div className="grid gap-2.5">
@@ -189,13 +188,13 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
                         onClick={() => setFormData({ ...formData, cravings_score: opt.val })}
                         className={`text-left p-4 rounded-2xl border text-sm font-sans transition-all flex items-center justify-between ${
                           formData.cravings_score === opt.val
-                            ? 'bg-[#f5ead8] border-[#c67139] shadow-sm ring-2 ring-[#c67139]/20 font-bold text-[#201e1d]'
-                            : 'bg-[#f5ead8]/60 border-[#201e1d]/10 hover:bg-[#f5ead8] text-[#201e1d]/80'
+                            ? 'bg-white border-orange-500 shadow-sm ring-2 ring-orange-500/20 font-bold text-slate-900'
+                            : 'bg-white border-slate-200 hover:border-slate-300 text-slate-700'
                         }`}
                       >
                         <span>{opt.label}</span>
                         {formData.cravings_score === opt.val && (
-                          <CheckCircle2 className="w-4 h-4 text-[#c67139] shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         )}
                       </button>
                     ))}
@@ -206,7 +205,7 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
               {/* Question 3 */}
               {step === 3 && (
                 <div className="space-y-4">
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#201e1d]">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900">
                     3. Estimated daily servings of high-fiber whole foods (beans, seeds, oats, leafy greens):
                   </h3>
                   <div className="grid gap-2.5">
@@ -223,13 +222,13 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
                         onClick={() => setFormData({ ...formData, fiber_intake: opt.val })}
                         className={`text-left p-4 rounded-2xl border text-sm font-sans transition-all flex items-center justify-between ${
                           formData.fiber_intake === opt.val
-                            ? 'bg-[#f5ead8] border-[#c67139] shadow-sm ring-2 ring-[#c67139]/20 font-bold text-[#201e1d]'
-                            : 'bg-[#f5ead8]/60 border-[#201e1d]/10 hover:bg-[#f5ead8] text-[#201e1d]/80'
+                            ? 'bg-white border-orange-500 shadow-sm ring-2 ring-orange-500/20 font-bold text-slate-900'
+                            : 'bg-white border-slate-200 hover:border-slate-300 text-slate-700'
                         }`}
                       >
                         <span>{opt.label}</span>
                         {formData.fiber_intake === opt.val && (
-                          <CheckCircle2 className="w-4 h-4 text-[#c67139] shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         )}
                       </button>
                     ))}
@@ -240,7 +239,7 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
               {/* Question 4 */}
               {step === 4 && (
                 <div className="space-y-4">
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#201e1d]">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900">
                     4. Average fullness and satiety duration after your main meal:
                   </h3>
                   <div className="grid gap-2.5">
@@ -257,13 +256,13 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
                         onClick={() => setFormData({ ...formData, satiety_duration: opt.val })}
                         className={`text-left p-4 rounded-2xl border text-sm font-sans transition-all flex items-center justify-between ${
                           formData.satiety_duration === opt.val
-                            ? 'bg-[#f5ead8] border-[#c67139] shadow-sm ring-2 ring-[#c67139]/20 font-bold text-[#201e1d]'
-                            : 'bg-[#f5ead8]/60 border-[#201e1d]/10 hover:bg-[#f5ead8] text-[#201e1d]/80'
+                            ? 'bg-white border-orange-500 shadow-sm ring-2 ring-orange-500/20 font-bold text-slate-900'
+                            : 'bg-white border-slate-200 hover:border-slate-300 text-slate-700'
                         }`}
                       >
                         <span>{opt.label}</span>
                         {formData.satiety_duration === opt.val && (
-                          <CheckCircle2 className="w-4 h-4 text-[#c67139] shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         )}
                       </button>
                     ))}
@@ -272,7 +271,7 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
               )}
 
               {/* Navigation Controls */}
-              <div className="flex items-center justify-between pt-4 border-t border-[#201e1d]/10">
+              <div className="flex items-center justify-between pt-4 border-t border-slate-200">
                 {step > 1 ? (
                   <button
                     type="button"
@@ -308,16 +307,16 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
 
           {/* Results Display */}
           {result && (
-            <div className="bg-[#f5ead8] border border-[#201e1d]/15 rounded-3xl p-6 sm:p-8 space-y-6 animate-fade-in shadow-inner">
+            <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-fade-in shadow-sm">
               
               {/* Score Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#201e1d]/10 pb-6">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
                 <div>
-                  <div className="text-xs font-mono uppercase tracking-wider text-[#7a8a5e] font-bold">
+                  <div className="text-xs font-mono uppercase tracking-wider text-emerald-700 font-bold">
                     Your Personalized Metabolic Index
                   </div>
-                  <div className="font-serif text-4xl sm:text-5xl text-[#201e1d] font-bold mt-1">
-                    {result.metabolic_score} <span className="text-xl text-[#201e1d]/50 font-normal">/ 100</span>
+                  <div className="font-heading text-4xl sm:text-5xl text-slate-900 font-bold mt-1">
+                    {result.metabolic_score} <span className="text-xl text-slate-400 font-normal">/ 100</span>
                   </div>
                 </div>
                 <div className="self-start sm:self-auto">
@@ -329,41 +328,41 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
 
               {/* 3 Key Calculated Insights */}
               <div className="grid sm:grid-cols-3 gap-3">
-                <div className="bg-[#ebddc5] rounded-2xl p-4 border border-[#201e1d]/10 space-y-1">
-                  <div className="text-xs font-mono text-[#201e1d]/60">Daily Fiber Deficit</div>
-                  <div className="font-serif text-2xl text-[#c67139] font-bold">
-                    -{result.insights?.fiber_deficit_g || 14}g <span className="text-xs font-sans font-normal text-[#201e1d]/60">/ day</span>
+                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-1">
+                  <div className="text-xs font-mono text-slate-500">Daily Fiber Deficit</div>
+                  <div className="font-heading text-2xl text-orange-600 font-bold">
+                    -{result.insights?.fiber_deficit_g || 14}g <span className="text-xs font-sans font-normal text-slate-400">/ day</span>
                   </div>
-                  <div className="text-[11px] text-[#201e1d]/70 font-sans">Below 30g daily target</div>
+                  <div className="text-[11px] text-slate-600 font-sans">Below 30g daily target</div>
                 </div>
 
-                <div className="bg-[#ebddc5] rounded-2xl p-4 border border-[#201e1d]/10 space-y-1">
-                  <div className="text-xs font-mono text-[#201e1d]/60">Glucose Volatility</div>
-                  <div className="font-serif text-2xl text-[#201e1d] font-bold">
+                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-1">
+                  <div className="text-xs font-mono text-slate-500">Glucose Volatility</div>
+                  <div className="font-heading text-2xl text-slate-900 font-bold">
                     {result.insights?.glucose_volatility || 'Moderate'}
                   </div>
-                  <div className="text-[11px] text-[#201e1d]/70 font-sans">Post-meal slump risk</div>
+                  <div className="text-[11px] text-slate-600 font-sans">Post-meal slump risk</div>
                 </div>
 
-                <div className="bg-[#ebddc5] rounded-2xl p-4 border border-[#201e1d]/10 space-y-1">
-                  <div className="text-xs font-mono text-[#201e1d]/60">Current Satiety Window</div>
-                  <div className="font-serif text-2xl text-[#7a8a5e] font-bold">
+                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 space-y-1">
+                  <div className="text-xs font-mono text-slate-500">Current Satiety Window</div>
+                  <div className="font-heading text-2xl text-emerald-700 font-bold">
                     ~{result.insights?.satiety_window_hours || 2.4} hrs
                   </div>
-                  <div className="text-[11px] text-[#201e1d]/70 font-sans">TriFiber target: 4.5+ hrs</div>
+                  <div className="text-[11px] text-slate-600 font-sans">TriFiber target: 4.5+ hrs</div>
                 </div>
               </div>
 
               {/* Personalized Protocol Box */}
-              <div className="bg-[#ebddc5]/70 rounded-2xl p-5 border border-[#201e1d]/10 space-y-3">
-                <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#201e1d]/60">
+              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-3">
+                <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
                   Evidence-Led Daily Protocol
                 </div>
-                <p className="text-sm text-[#201e1d]/85 leading-relaxed font-sans">
+                <p className="text-sm text-slate-700 leading-relaxed font-sans">
                   {result.recommendation}
                 </p>
-                <div className="pt-2 text-xs font-sans text-[#201e1d] flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#7a8a5e] shrink-0" />
+                <div className="pt-2 text-xs font-sans text-slate-800 flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span><strong>Recommended Product:</strong> {result.recommended_product}</span>
                 </div>
               </div>
@@ -384,7 +383,7 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
 
                 <button
                   onClick={resetQuiz}
-                  className="btn btn-ghost text-xs text-[#201e1d]/70 py-3"
+                  className="btn btn-ghost text-xs text-slate-600 py-3"
                 >
                   Retake Quiz
                 </button>
@@ -395,6 +394,6 @@ export default function MetabolicQuiz({ setActiveTab, addToCart }) {
 
         </div>
       </div>
-    </section>
+    </div>
   );
 }

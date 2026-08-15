@@ -11,23 +11,23 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
   const [activeInteractiveTab, setActiveInteractiveTab] = useState('glucose'); // 'glucose', 'formula', 'timeline'
 
   return (
-    <div className="space-y-16 lg:space-y-24 py-10 lg:py-16 bg-[#f5ead8]">
+    <div className="space-y-16 lg:space-y-24 py-10 lg:py-16 bg-white">
       
       {/* 1. HERO: WHY YOU HAVE COME HERE & WHAT WE PROVIDE */}
       <section className="container-max">
         <div className="grid lg:grid-cols-12 gap-12 items-center text-left">
           
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e1eecc] text-[#3d472b] text-xs font-semibold">
-              <Sparkles className="w-3.5 h-3.5 text-[#7a8a5e]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold border border-emerald-200">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
               <span>Evidence-Led Everyday Nutrition</span>
             </div>
 
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.05] tracking-tight text-[#201e1d]">
+            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight text-slate-900">
               Close the fiber gap. Balance your daily glucose & gut health.
             </h1>
 
-            <p className="text-[#201e1d]/75 text-lg sm:text-xl leading-relaxed max-w-xl font-sans">
+            <p className="text-slate-600 text-lg sm:text-xl leading-relaxed max-w-xl font-sans">
               95% of modern adults fall far short of the 30g daily fiber target, leading to post-meal glucose spikes, 3 PM energy crashes, and poor gut motility. We provide evidence-led, clinical daily nutrition engineered to make metabolic balance effortless.
             </p>
 
@@ -49,18 +49,18 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
             </div>
 
             {/* Quick Metrics */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[#201e1d]/15">
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200">
               <div>
-                <div className="font-serif text-2xl text-[#201e1d]">3-in-1</div>
-                <div className="text-xs text-[#201e1d]/60 font-sans mt-0.5">Soluble · Insoluble · Prebiotic</div>
+                <div className="font-heading text-2xl font-bold text-slate-900">3-in-1</div>
+                <div className="text-xs text-slate-500 font-sans mt-0.5">Soluble · Insoluble · Prebiotic</div>
               </div>
               <div>
-                <div className="font-serif text-2xl text-[#201e1d]">500 mg</div>
-                <div className="text-xs text-[#201e1d]/60 font-sans mt-0.5">Standardized Berberine Target</div>
+                <div className="font-heading text-2xl font-bold text-slate-900">500 mg</div>
+                <div className="text-xs text-slate-500 font-sans mt-0.5">Standardized Berberine Target</div>
               </div>
               <div>
-                <div className="font-serif text-2xl text-[#201e1d]">100% Clean</div>
-                <div className="text-xs text-[#201e1d]/60 font-sans mt-0.5">QR-linked Eurofins Lab Reports</div>
+                <div className="font-heading text-2xl font-bold text-slate-900">100% Clean</div>
+                <div className="text-xs text-slate-500 font-sans mt-0.5">QR-linked Eurofins Lab Reports</div>
               </div>
             </div>
 
@@ -68,29 +68,29 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
 
           {/* Right Hero Card: The 2-Step Routine Summary */}
           <div className="lg:col-span-5">
-            <div className="bg-[#ebddc5] border border-[#201e1d]/15 rounded-[36px] p-8 shadow-sm space-y-6">
+            <div className="bg-slate-50 border border-slate-200 rounded-[32px] p-8 shadow-sm space-y-6">
               
               <div className="flex items-center justify-between">
-                <span className="tag tag-accent">What We Provide</span>
-                <span className="text-xs font-mono font-semibold text-[#7a8a5e]">FSSAI Certified</span>
+                <span className="tag tag-accent font-semibold">What We Provide</span>
+                <span className="text-xs font-mono font-semibold text-emerald-700">FSSAI Certified</span>
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-serif text-2xl text-[#201e1d]">The Dual Metabolic Routine</h3>
-                <p className="text-xs sm:text-sm text-[#201e1d]/70 leading-relaxed font-sans">
+                <h3 className="font-heading text-2xl font-bold text-slate-900">The Dual Metabolic Routine</h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
                   A synergistic morning & pre-meal system engineered to sustain fullness, flatten post-prandial glucose curves, and nourish your gut microbiome.
                 </p>
               </div>
 
-              <div className="bg-[#f5ead8] rounded-2xl p-4 border border-[#201e1d]/10 space-y-3 text-xs">
-                <div className="flex items-start gap-2.5 text-[#201e1d]">
-                  <CheckCircle2 className="w-4 h-4 text-[#c67139] shrink-0 mt-0.5" />
+              <div className="bg-white rounded-2xl p-4 border border-slate-200 space-y-3 text-xs shadow-sm">
+                <div className="flex items-start gap-2.5 text-slate-800">
+                  <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
                   <div>
                     <strong>Morning Habit:</strong> 1 scoop TriFiber Daily in water (Lemon-Jeera botanical blend)
                   </div>
                 </div>
-                <div className="flex items-start gap-2.5 text-[#201e1d]">
-                  <CheckCircle2 className="w-4 h-4 text-[#7a8a5e] shrink-0 mt-0.5" />
+                <div className="flex items-start gap-2.5 text-slate-800">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
                     <strong>Pre-Meal Habit:</strong> 1 capsule Berberine Balance before your main carbohydrate meal
                   </div>
@@ -98,7 +98,7 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
               </div>
 
               <div className="flex items-center justify-between pt-2">
-                <div className="text-xs font-mono text-[#201e1d]/60">Verified pure ingredients</div>
+                <div className="text-xs font-mono text-slate-500">Verified pure ingredients</div>
                 <button
                   onClick={() => setActiveTab('batch')}
                   className="btn btn-ghost text-xs font-semibold"
@@ -117,39 +117,39 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
       <section className="container-max text-left space-y-8">
         <div className="space-y-2">
           <span className="tag tag-accent-2 text-xs">The Problem & The Solution</span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#201e1d]">
+          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-slate-900">
             Why Modern Diets Fail Your Metabolic Health
           </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
           
-          <div className="bg-[#ebddc5] border border-[#201e1d]/10 rounded-3xl p-6 sm:p-8 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-[#c67139] text-[#f5ead8] flex items-center justify-center font-serif text-lg font-bold">
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-3 hover:shadow-md transition-all">
+            <div className="w-10 h-10 rounded-xl bg-orange-600 text-white flex items-center justify-center font-heading text-lg font-bold">
               1
             </div>
-            <h3 className="font-serif text-xl text-[#201e1d]">The 15g Daily Fiber Deficit</h3>
-            <p className="text-xs sm:text-sm text-[#201e1d]/75 leading-relaxed font-sans">
+            <h3 className="font-heading text-xl font-bold text-slate-900">The 15g Daily Fiber Deficit</h3>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
               Ultra-processed and refined foods lack fermentable fibers. Without them, beneficial gut microbes (*Akkermansia* & *Bifidobacteria*) starve, causing bloating, sluggish motility, and reduced mucosal barrier strength.
             </p>
           </div>
 
-          <div className="bg-[#ebddc5] border border-[#201e1d]/10 rounded-3xl p-6 sm:p-8 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-[#7a8a5e] text-[#f5ead8] flex items-center justify-center font-serif text-lg font-bold">
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-3 hover:shadow-md transition-all">
+            <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-heading text-lg font-bold">
               2
             </div>
-            <h3 className="font-serif text-xl text-[#201e1d]">3 PM Sugar Spikes & Crashes</h3>
-            <p className="text-xs sm:text-sm text-[#201e1d]/75 leading-relaxed font-sans">
+            <h3 className="font-heading text-xl font-bold text-slate-900">3 PM Sugar Spikes & Crashes</h3>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
               Fast-digesting refined carbs cause sharp blood sugar spikes followed by steep reactive drops. This triggers midday fatigue, brain fog, and intense late-afternoon sugar cravings.
             </p>
           </div>
 
-          <div className="bg-[#ebddc5] border border-[#201e1d]/10 rounded-3xl p-6 sm:p-8 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-[#201e1d] text-[#f5ead8] flex items-center justify-center font-serif text-lg font-bold">
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-3 hover:shadow-md transition-all">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-heading text-lg font-bold">
               3
             </div>
-            <h3 className="font-serif text-xl text-[#201e1d]">The Post-GLP-1 Era Challenge</h3>
-            <p className="text-xs sm:text-sm text-[#201e1d]/75 leading-relaxed font-sans">
+            <h3 className="font-heading text-xl font-bold text-slate-900">The Post-GLP-1 Era Challenge</h3>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
               Preserving gut motility, lean muscle, and natural endogenous satiety signaling requires consistent prebiotic fiber and standardized AMPK metabolic support to prevent post-medication rebound.
             </p>
           </div>
@@ -163,11 +163,11 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
             <span className="tag tag-accent mb-2">The Product Portfolio</span>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#201e1d]">
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-slate-900">
               Two Targeted Formulas. One Daily Habit.
             </h2>
           </div>
-          <p className="text-xs text-[#201e1d]/60 font-mono max-w-xs">
+          <p className="text-xs text-slate-500 font-mono max-w-xs">
             Evidence-led ingredients at full therapeutic clinical dosages.
           </p>
         </div>
@@ -175,44 +175,44 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
         <div className="grid md:grid-cols-2 gap-8">
           
           {/* Product 1: TriFiber Daily */}
-          <div className="bg-[#ebddc5] border border-[#201e1d]/15 rounded-[32px] p-8 flex flex-col justify-between hover:shadow-md transition-all">
+          <div className="bg-white border border-slate-200 rounded-[32px] p-8 flex flex-col justify-between hover:shadow-lg transition-all">
             <div className="space-y-6">
               
               <div className="flex items-start justify-between">
                 <span className="tag tag-accent">Morning Habit</span>
-                <span className="text-xs font-mono font-semibold text-[#c67139]">Lemon-Jeera Flavor</span>
+                <span className="text-xs font-mono font-semibold text-orange-600">Lemon-Jeera Flavor</span>
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-serif text-3xl text-[#201e1d]">TriFiber Daily</h3>
-                <p className="text-sm text-[#201e1d]/75 leading-relaxed font-sans">
+                <h3 className="font-heading text-3xl font-bold text-slate-900">TriFiber Daily</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-sans">
                   A light, refreshing 3-in-1 multi-fiber drink combining Swedish Oat Beta-Glucan, Acacia Fibregum™, and Resistant Starch. Zero psyllium sludge, zero bloating.
                 </p>
               </div>
 
-              <div className="bg-[#f5ead8] rounded-2xl p-4 border border-[#201e1d]/10 space-y-2 text-xs text-[#201e1d]">
+              <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-2 text-xs text-slate-800">
                 <div className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#c67139]" />
+                  <CheckCircle2 className="w-4 h-4 text-orange-600" />
                   <span>3.0g Standardized Oat Beta-Glucan (Glucose Shield)</span>
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#c67139]" />
+                  <CheckCircle2 className="w-4 h-4 text-orange-600" />
                   <span>4.5g Prebiotic Acacia Fibregum™ (SCFA Producer)</span>
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#c67139]" />
+                  <CheckCircle2 className="w-4 h-4 text-orange-600" />
                   <span>2.5g Resistant Tapioca Starch (Colonic Motility)</span>
                 </div>
               </div>
 
             </div>
 
-            <div className="pt-8 border-t border-[#201e1d]/10 space-y-4">
+            <div className="pt-8 border-t border-slate-100 space-y-4">
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-[#201e1d]">
+                <span className="font-heading text-3xl font-bold text-slate-900">
                   {symbol}{currency === 'USD' ? 29 : currency === 'AED' ? 99 : 1199}
                 </span>
-                <span className="text-xs text-[#201e1d]/60 font-sans">
+                <span className="text-xs text-slate-500 font-sans">
                   / 30-day supply (30 single-serve sachets)
                 </span>
               </div>
@@ -243,44 +243,44 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
           </div>
 
           {/* Product 2: Berberine Balance */}
-          <div className="bg-[#f0fae1] border border-[#7a8a5e]/25 rounded-[32px] p-8 flex flex-col justify-between hover:shadow-md transition-all">
+          <div className="bg-emerald-50/50 border border-emerald-200/80 rounded-[32px] p-8 flex flex-col justify-between hover:shadow-lg transition-all">
             <div className="space-y-6">
               
               <div className="flex items-start justify-between">
                 <span className="tag tag-accent-2">Pre-Meal Habit</span>
-                <span className="text-xs font-mono font-semibold text-[#7a8a5e]">97%+ Pure HPLC</span>
+                <span className="text-xs font-mono font-semibold text-emerald-700">97%+ Pure HPLC</span>
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-serif text-3xl text-[#201e1d]">Berberine Balance</h3>
-                <p className="text-sm text-[#201e1d]/75 leading-relaxed font-sans">
+                <h3 className="font-heading text-3xl font-bold text-slate-900">Berberine Balance</h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-sans">
                   High-purity standardized Berberine HCl (500mg) paired with Piperine for superior gastrointestinal bioavailability and cellular AMPK metabolic pathway activation.
                 </p>
               </div>
 
-              <div className="bg-[#f5ead8] rounded-2xl p-4 border border-[#201e1d]/10 space-y-2 text-xs text-[#201e1d]">
+              <div className="bg-white rounded-2xl p-4 border border-emerald-200/60 space-y-2 text-xs text-slate-800 shadow-sm">
                 <div className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#7a8a5e]" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <span>500mg Pure Standardized Berberine HCl</span>
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#7a8a5e]" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <span>5mg Piperine Extract (Bio-availability enhancer)</span>
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#7a8a5e]" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   <span>FSSAI Schedule IV Botanical Clearance</span>
                 </div>
               </div>
 
             </div>
 
-            <div className="pt-8 border-t border-[#7a8a5e]/20 space-y-4">
+            <div className="pt-8 border-t border-emerald-200/60 space-y-4">
               <div className="flex items-baseline gap-2">
-                <span className="font-serif text-3xl font-bold text-[#201e1d]">
+                <span className="font-heading text-3xl font-bold text-slate-900">
                   {symbol}{currency === 'USD' ? 34 : currency === 'AED' ? 119 : 1299}
                 </span>
-                <span className="text-xs text-[#201e1d]/60 font-sans">
+                <span className="text-xs text-slate-500 font-sans">
                   / 30-day supply (60 vegan capsules)
                 </span>
               </div>
@@ -319,19 +319,19 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <span className="tag tag-accent text-xs">Scientific Spotlight</span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-[#201e1d]">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900">
               Explore the Physiological Proof
             </h2>
           </div>
 
           {/* Clean Segmented Tab Switcher */}
-          <div className="flex items-center gap-2 bg-[#ebddc5] p-1.5 rounded-2xl border border-[#201e1d]/10 self-start sm:self-auto shrink-0 shadow-sm">
+          <div className="flex items-center gap-2 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 self-start sm:self-auto shrink-0 shadow-sm">
             <button
               onClick={() => setActiveInteractiveTab('glucose')}
               className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                 activeInteractiveTab === 'glucose'
-                  ? 'bg-[#201e1d] text-[#f5ead8] shadow-sm'
-                  : 'text-[#201e1d]/70 hover:text-[#201e1d]'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               📈 Glucose Simulator
@@ -340,8 +340,8 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
               onClick={() => setActiveInteractiveTab('formula')}
               className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                 activeInteractiveTab === 'formula'
-                  ? 'bg-[#201e1d] text-[#f5ead8] shadow-sm'
-                  : 'text-[#201e1d]/70 hover:text-[#201e1d]'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               🧬 Formula Breakdown
@@ -350,8 +350,8 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
               onClick={() => setActiveInteractiveTab('timeline')}
               className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                 activeInteractiveTab === 'timeline'
-                  ? 'bg-[#201e1d] text-[#f5ead8] shadow-sm'
-                  : 'text-[#201e1d]/70 hover:text-[#201e1d]'
+                  ? 'bg-slate-900 text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               ⏱️ 90-Day Timeline
@@ -360,7 +360,7 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
         </div>
 
         {/* Dynamic Display of Selected Interactive Module */}
-        <div className="rounded-[32px] overflow-hidden border border-[#201e1d]/10">
+        <div className="rounded-[32px] overflow-hidden border border-slate-200 shadow-sm bg-white">
           {activeInteractiveTab === 'glucose' && (
             <GlucoseCurveSimulator setActiveTab={setActiveTab} />
           )}
@@ -376,11 +376,11 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
 
       {/* 5. RADICAL TRANSPARENCY & BATCH LAB PROMISE */}
       <section className="container-max text-left">
-        <div className="bg-[#ebddc5] border border-[#201e1d]/10 rounded-[32px] p-8 lg:p-12 space-y-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[#201e1d]/10 pb-6">
+        <div className="bg-slate-50 border border-slate-200 rounded-[32px] p-8 lg:p-12 space-y-6 shadow-sm">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
             <div className="space-y-1">
               <span className="tag tag-accent-2 text-xs">Quality Assurance</span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-[#201e1d]">
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-slate-900">
                 100% Batch Purity & Lab Transparency
               </h3>
             </div>
@@ -388,12 +388,12 @@ export default function CleanHome({ currency, addToCart, setActiveTab }) {
               onClick={() => setActiveTab('batch')}
               className="btn btn-secondary text-xs py-2.5 px-5 flex items-center gap-2"
             >
-              <FileText className="w-3.5 h-3.5 text-[#c67139]" />
+              <FileText className="w-3.5 h-3.5 text-orange-600" />
               <span>Verify Any Batch CoA &rarr;</span>
             </button>
           </div>
 
-          <p className="text-xs sm:text-sm text-[#201e1d]/75 max-w-3xl leading-relaxed font-sans">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed font-sans">
             Every production batch is tested by accredited third-party labs (Eurofins & SGS) for heavy metal purity (&lt;0.005 ppm), active beta-glucan assay, and zero microbial contaminants. Scan the QR code on your product box to review your specific Certificate of Analysis.
           </p>
         </div>
